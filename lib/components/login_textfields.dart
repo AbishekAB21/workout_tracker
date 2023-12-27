@@ -17,16 +17,17 @@ class LoginTextfields extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
         controller: controller,
+        style: TextStyle(color: Colors.white),
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.deepPurple)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade700)),
+              borderSide: BorderSide(color: Colors.white54)),
           filled: true,
-          fillColor: Colors.grey.shade200,
+          fillColor: Colors.deepPurpleAccent.shade200,
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey[500]),
+          hintStyle: TextStyle(color: Colors.white54),
         ),
       ),
     );

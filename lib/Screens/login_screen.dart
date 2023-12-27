@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workout_tracker/Screens/home_screen.dart';
+import 'package:workout_tracker/Screens/new_homescreen.dart';
 import 'package:workout_tracker/Screens/splash_screen.dart';
 import 'package:workout_tracker/components/login_textfields.dart';
 import 'package:workout_tracker/components/sign_in_button.dart';
@@ -14,26 +14,40 @@ class LoginScreen extends StatelessWidget {
 
   // visiblity
   static const String AdminKey = "visible";
-  bool Admin = false;
+  bool isAdmin = false;
+  bool ifAdmin() {
+    String username = usernameController.text;
+    String password = passwordController.text;
+    if (username == "Admin" && password == "AdminPass") {
+      bool Admin = true;
+      return Admin;
+    } else {
+      bool Admin = false;
+      return Admin;
+    }
+  }
+
 
   // check if Admin or User
   void loginCheck(BuildContext context) async {
     if (usernameController.text == "Admin" &&
         passwordController.text == "AdminPass") {
+      bool AdminLoggedin = ifAdmin();
       // Already logged in then stay logged in until logged out
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
 
       // // Admin visiblity bool
-      var isAdmin = await SharedPreferences.getInstance();
-      isAdmin.getBool(AdminKey);
-      Admin = isAdmin.setBool(AdminKey, true) as bool;
-      Admin = true;
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      
+      // var isAdmin = await SharedPreferences.getInstance();
+      // isAdmin.getBool(AdminKey);
+      // Admin = isAdmin.setBool(AdminKey, true) as bool;
+      //Admin = true;
+
+     Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreenMachTwo(isAdmin: AdminLoggedin,)));
     } else if (usernameController.text == "User" &&
         passwordController.text == "UserPass") {
+      bool AdminLoggedin = ifAdmin();
       // Already logged in then stay logged in until logged out
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
@@ -42,10 +56,10 @@ class LoginScreen extends StatelessWidget {
       // var isAdmin = await SharedPreferences.getInstance();
       // isAdmin.getBool(AdminKey);
       // Admin = isAdmin.setBool(AdminKey, false) as bool;
-      Admin = false;
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
-          
+      //Admin = false;
+
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreenMachTwo(isAdmin: AdminLoggedin,)));
     } else if (usernameController.text.isEmpty &&
         passwordController.text.isEmpty) {
       // Show Snackbar
@@ -60,7 +74,6 @@ class LoginScreen extends StatelessWidget {
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.all(10),
       ));
-     
     } else {
       // Show Snackbar
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -74,7 +87,6 @@ class LoginScreen extends StatelessWidget {
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.all(10),
       ));
-      
     }
   }
 
@@ -83,7 +95,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.deepPurple,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -96,6 +108,7 @@ class LoginScreen extends StatelessWidget {
               Icon(
                 Icons.lock,
                 size: 100,
+                color: Colors.white70,
               ),
 
               SizedBox(
@@ -105,7 +118,7 @@ class LoginScreen extends StatelessWidget {
               // welcome text
               Text(
                 "Welcome back !",
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                style: TextStyle(fontSize: 16, color: Colors.white70),
               ),
 
               SizedBox(
@@ -139,7 +152,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Forgot Password ?",
-                      style: TextStyle(color: Colors.grey[700]),
+                      style: TextStyle(color: Colors.white70),
                     ),
                   ],
                 ),

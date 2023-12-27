@@ -21,10 +21,10 @@ class CuttingAlertBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.deepPurple,
       title: Text(
         "Edit Diet Plan (Cutting)",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white70),
       ),
       content: SingleChildScrollView(
         child: Column(
@@ -34,14 +34,16 @@ class CuttingAlertBox extends StatelessWidget {
               controller: tip1,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "First tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -51,14 +53,16 @@ class CuttingAlertBox extends StatelessWidget {
               controller: tip2,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Second tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -68,14 +72,16 @@ class CuttingAlertBox extends StatelessWidget {
               controller: tip3,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Third tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -85,14 +91,16 @@ class CuttingAlertBox extends StatelessWidget {
               controller: tip4,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Fourth tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -102,14 +110,16 @@ class CuttingAlertBox extends StatelessWidget {
               controller: tip5,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Fifth tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
           ],
@@ -123,10 +133,10 @@ class CuttingAlertBox extends StatelessWidget {
               // String tip3 =
               // String tip4 =
               // String tip5 =
-
-              DietData().addCutTip(
+     DietData dietData = DietData();
+              dietData.addCutTip(
                   tip1.text, tip2.text, tip3.text, tip4.text, tip5.text);
-              print(DietData().CutDietTips);
+              print(dietData.cutDietTips.length);
 
               Navigator.pop(context);
             },

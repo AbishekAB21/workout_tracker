@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workout_tracker/Screens/exercise_screen.dart';
-import 'package:workout_tracker/Screens/login_screen.dart';
 
 class WorkoutTile extends StatelessWidget {
   String workoutName;
@@ -27,19 +25,12 @@ class WorkoutTile extends StatelessWidget {
         ));
   }
 
-  // Get shared preferences
-  // Future<bool?> getsharedpref() async{
-  //   var admin = await SharedPreferences.getInstance();
-
-  //  return admin.setBool(LoginScreen.AdminKey, false);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 15, right: 15),
       child: ListTile(
-        tileColor: Colors.grey[850],
+        tileColor: Colors.deepPurpleAccent.shade200,
         textColor: Colors.white,
         iconColor: Colors.white,
         contentPadding: EdgeInsets.all(15),
@@ -58,7 +49,7 @@ class WorkoutTile extends StatelessWidget {
                 icon: Icon(Icons.arrow_forward_ios)),
           ],
         ),
-        leading: Image.asset('assets/DumbellForInsideApp.png'),
+        leading: Icon(Icons.sports_gymnastics_rounded, color: Colors.white70 , size: 35,),
       ),
     );
   }

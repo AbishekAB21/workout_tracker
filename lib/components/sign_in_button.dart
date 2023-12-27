@@ -17,13 +17,13 @@ class SignInButton extends StatelessWidget {
         padding: EdgeInsets.all(25),
         margin: EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.deepPurpleAccent.shade200,
           borderRadius: BorderRadius.circular(8)
         ),
         child: Text(
           "Sign In", 
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.white70,
             fontSize: 16,
             fontWeight: FontWeight.bold
             ),),

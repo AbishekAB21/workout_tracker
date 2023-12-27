@@ -1,0 +1,159 @@
+import 'package:flutter/material.dart';
+import 'package:workout_tracker/Screens/bmi_calculator.dart';
+import 'package:workout_tracker/Screens/calorie_calculator.dart';
+import 'package:workout_tracker/Screens/protein_calculator.dart';
+
+class Calculators extends StatefulWidget {
+  const Calculators({super.key});
+
+  @override
+  State<Calculators> createState() => _CalculatorsState();
+}
+
+class _CalculatorsState extends State<Calculators> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Calculators",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Monitor your BMI, Protein intake & Calorie intake.",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => BMICalculator(),));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.deepPurpleAccent.shade200,
+                            borderRadius: BorderRadius.circular(5)),
+                        height: 100,
+                        width: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.calculate_rounded,
+                              size: 40,
+                              color: Colors.white70,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "BMI",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white70,
+                                  fontSize: 15),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProteinCalculator(),));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.deepPurpleAccent.shade200,
+                            borderRadius: BorderRadius.circular(5)),
+                        height: 100,
+                        width: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.calculate_rounded,
+                              size: 40,
+                              color: Colors.white70,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Protein",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white70,
+                                  fontSize: 15),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => CalorieCalculator(),));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.deepPurpleAccent.shade200,
+                            borderRadius: BorderRadius.circular(5)),
+                        height: 100,
+                        width: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.calculate_rounded,
+                              size: 40,
+                              color: Colors.white70,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Calories",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white70,
+                                  fontSize: 15),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+      ],
+    );
+  }
+}

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class BMICalculator extends StatefulWidget {
@@ -10,9 +8,8 @@ class BMICalculator extends StatefulWidget {
 }
 
 class _BMICalculatorState extends State<BMICalculator> {
-
 // Bool
- bool isVisible = false;
+  bool isVisible = false;
 
 // BMI Value
   double? BMI;
@@ -41,15 +38,32 @@ class _BMICalculatorState extends State<BMICalculator> {
     return BMI_Val;
   }
 
+  // SnackBar
+  void checkCntrls() {
+    if (heightController.text.isEmpty || weightController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Height or weight should not be empty"),
+        backgroundColor: Colors.red,
+        closeIconColor: Colors.white,
+        showCloseIcon: true,
+        duration: Duration(seconds: 5),
+        dismissDirection: DismissDirection.down,
+        elevation: 2,
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.all(10),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.deepPurple,
       appBar: AppBar(
         toolbarHeight: 30,
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.deepPurple,
         elevation: 0,
-        iconTheme: IconThemeData(),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -65,6 +79,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                       Icon(
                         Icons.calculate_rounded,
                         size: 50,
+                        color: Colors.white,
                       ),
                       SizedBox(
                         height: 10,
@@ -72,14 +87,19 @@ class _BMICalculatorState extends State<BMICalculator> {
                       Text(
                         "Calculate your BMI (Body Mass Index)",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         "This will help you in configuring the perfect workout plan.",
-                        style: TextStyle(color: Colors.grey[800]),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       )
                     ],
                   ),
@@ -92,16 +112,20 @@ class _BMICalculatorState extends State<BMICalculator> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
                   controller: heightController,
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.grey.shade700)),
-                      filled: true,
-                      fillColor: Colors.grey[300],
-                      hintText: "Enter your height (In cms)",
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.white))),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Colors.white54)),
+                    filled: true,
+                    fillColor: Colors.deepPurpleAccent.shade200,
+                    hintText: "Enter your height (In cms)",
+                    hintStyle: TextStyle(color: Colors.white70),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(
+                            color: Colors.deepPurpleAccent.shade200)),
+                  ),
                 ),
               ),
               SizedBox(
@@ -111,16 +135,19 @@ class _BMICalculatorState extends State<BMICalculator> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
                   controller: weightController,
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.grey.shade700)),
+                          borderSide: BorderSide(color: Colors.white54)),
                       filled: true,
-                      fillColor: Colors.grey[300],
+                      fillColor: Colors.deepPurpleAccent.shade200,
                       hintText: "Enter your Weight (In kgs)",
+                      hintStyle: TextStyle(color: Colors.white70),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.white))),
+                          borderSide: BorderSide(
+                              color: Colors.deepPurpleAccent.shade200))),
                 ),
               ),
               SizedBox(
@@ -128,8 +155,13 @@ class _BMICalculatorState extends State<BMICalculator> {
               ),
               ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black)),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                      backgroundColor: MaterialStateProperty.all(
+                          Colors.deepPurpleAccent.shade200)),
                   onPressed: () {
+                    checkCntrls();
+
                     String height = heightController.text;
                     String Weight = weightController.text;
 
@@ -145,22 +177,33 @@ class _BMICalculatorState extends State<BMICalculator> {
 
                     isVisible = true;
                   },
-                  child: Text("Calculate BMI")),
+                  child: Text(
+                    "Calculate BMI",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  )),
               SizedBox(
                 height: 20,
               ),
               Visibility(
-                visible: isVisible ,
-                child: Text("BMI = $BMI")),
+                  visible: isVisible,
+                  child: Text(
+                    "BMI = $BMI",
+                    style: TextStyle(color: Colors.white),
+                  )),
               SizedBox(
                 height: 10,
               ),
               Text(
                 "$WeightStatus",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               SizedBox(height: 10),
               Card(
+                color: Colors.deepPurpleAccent.shade200,
                 elevation: 2,
                 child: Container(
                   padding: EdgeInsets.all(20),
@@ -169,25 +212,58 @@ class _BMICalculatorState extends State<BMICalculator> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [Text("BMI <18.5"), Text("Underweight")],
-                      ),
-                      SizedBox(height: 5),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("BMI 18.5 - 24.9"),
-                          Text("Normal Weight")
+                          Text(
+                            "BMI <18.5",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            "Underweight",
+                            style: TextStyle(color: Colors.white),
+                          )
                         ],
                       ),
                       SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [Text("BMI 25-29.9"), Text("Overweight")],
+                        children: [
+                          Text(
+                            "BMI 18.5 - 24.9",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            "Normal Weight",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
                       ),
                       SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [Text("BMI > 31"), Text("Obese")],
+                        children: [
+                          Text(
+                            "BMI 25-29.9",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            "Overweight",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "BMI > 31",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            "Obese",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
                       ),
                       SizedBox(height: 5),
                     ],

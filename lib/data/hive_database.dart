@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:workout_tracker/datetime/date_time.dart';
 import 'package:workout_tracker/models/diet.dart';
@@ -8,7 +9,10 @@ class HiveDatabase {
   // refference the Hive box
   final _myBox = Hive.box("workout_database");
   final _myCutBox = Hive.box("diet_database");
-  
+
+  //Download method
+  final _myfilepath = Hive.box("path_database");
+
   // check if data is already stored, if not, record start date
   bool previousDataExists() {
     if (_myBox.isEmpty) {
@@ -22,11 +26,11 @@ class HiveDatabase {
   }
 
   // check if data is already stored (Diet)
-  bool previousCutDietData(){
-    if(_myCutBox.isEmpty){
+  bool previousCutDietData() {
+    if (_myCutBox.isEmpty) {
       print("Previous data does not exist");
       return false;
-    }else{
+    } else {
       print("Previous data exists");
       return true;
     }
@@ -36,6 +40,7 @@ class HiveDatabase {
   String getStatDate() {
     return _myBox.get("START_DATE");
   }
+
   // write data to the database (Workouts)
   void saveToDatabase(List<Workout> workouts) {
     // Convert workout objects into a List of string so that we can save it into Hive
@@ -58,45 +63,39 @@ class HiveDatabase {
     _myBox.put("EXERCISES", exerciseList);
   }
 
-//------------------------------ DIET --------------------------------
+ //------------------------------ DIET --------------------------------
 
-  // Write data to database (Diet) (Cutting)
-  void saveCuttingdiet(List<CutDiet> cut){
-
-    // Convert objects into a List of strings so that we can store it in hive 
-
-     final cutList = convertCutDietToList(cut);
-
-    // List cutList = [];
-    // cutList.addAll(convertCutDietToList(cut));
+  // Download method
+  void saveFilePath(String path) {
+    String filepath = path;
+    print(filepath);
+    _myfilepath.put("path_database", filepath);
     
+  }
 
-    // Save to Hive
+
+  void saveCuttingdiet(List<CutDiet> cut) {
+    final cutList = cut.map((cutDiet) => cutDiet.toMap()).toList();
     _myCutBox.put("diet_database", cutList);
   }
 
-  // read data and return a list of tips (Diet) (Cutting)
-  List<CutDiet> readFromDietDatabase(){
-    List<CutDiet> mySavedCutDietTips = [];
 
-    List<String> cutDietTips = _myCutBox.get("diet_database");
+  // }
 
-    List<CutDiet> cutTips = [];
+  List<CutDiet> readFromDietDatabase() {
+    List<Map<String, dynamic>>? cutDietMaps = _myCutBox.get("diet_database");
 
-    cutTips.add( CutDiet(
-      CutTip1: cutDietTips[0], 
-      CutTip2: cutDietTips[1], 
-      CutTip3: cutDietTips[2], 
-      CutTip4: cutDietTips[3], 
-      CutTip5: cutDietTips[4],
-    ));
+    if (cutDietMaps == null || cutDietMaps.isEmpty) {
+      Text("No Data");
+    }
 
-    mySavedCutDietTips.add(cutTips as CutDiet);
+    List<CutDiet> mySavedCutDietTips =
+        cutDietMaps!.map((cutMap) => CutDiet.fromMap(cutMap)).toList();
 
     return mySavedCutDietTips;
   }
 
-//------------------------------ DIET --------------------------------
+ //------------------------------ DIET --------------------------------
 
   // read data, and return a list of workouts
   List<Workout> readFromDatabase() {
@@ -155,27 +154,20 @@ class HiveDatabase {
 
   // edit Workout name and save to database
   void editWorkoutName() {}
+
+  // 
 }
 
-// converts diet tips into a List (CUTTING)
+List<Map<String, dynamic>> convertCutDietToMapList(List<CutDiet> cut) {
+  List<Map<String, dynamic>> cutList = [];
 
-List <String> convertCutDietToList(List<CutDiet> cut){
-  List<String> cutList = [];
-
-  // cutList.insert(0, cut[1].CutTip1);
-  // cutList.insert(1, cut[2].CutTip2);
-  // cutList.insert(2, cut[3].CutTip3);
-  // cutList.insert(3, cut[4].CutTip4);
-  
-  cutList.add(cut[0].CutTip1);
-  cutList.add(cut[1].CutTip2);
-  cutList.add(cut[2].CutTip3);
-  cutList.add(cut[3].CutTip4);
-  cutList.add(cut[4].CutTip5);
+  for (int i = 0; i < cut.length; i++) {
+    cutList.add({'CutTip${i + 1}': cut[i].toMap()});
+  }
 
   return cutList;
 }
- 
+
 // converts workout objects into a list
 List<String> convertObjectToWorkoutList(List<Workout> workouts) {
   List<String> workoutList = [

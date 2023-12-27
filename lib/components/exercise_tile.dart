@@ -24,10 +24,10 @@ class ExerciseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-      color: Colors.grey[800],
+      color: Colors.deepPurpleAccent.shade200,
       child: ListTile(
         // dense: true,
-        leading: Image.asset("assets/DumbellForInsideApp.png"),
+        leading:  Icon(Icons.sports_gymnastics_rounded, color: Colors.white70 , size: 35,),
         title: Text(
           exerciseName,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
@@ -35,17 +35,41 @@ class ExerciseTile extends StatelessWidget {
         subtitle: Row(
           children: [
             // Weight
-            Chip(label: Text("${weight} kg")),
+            Chip(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+              padding: EdgeInsets.symmetric(horizontal: 3),
+              side: BorderSide(color: Colors.white),
+                backgroundColor: Colors.deepPurpleAccent.shade200,
+                label: Text(
+                  "${weight} kg",
+                  style: TextStyle(color: Colors.white),
+                )),
             const SizedBox(
               width: 5,
             ),
             // Reps
-            Chip(label: Text("${reps} Reps")),
+            Chip(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+              padding: EdgeInsets.symmetric(horizontal: 3),
+              side: BorderSide(color: Colors.white),
+                backgroundColor: Colors.deepPurpleAccent.shade200,
+                label: Text(
+                  "${reps} Reps",
+                  style: TextStyle(color: Colors.white),
+                )),
             const SizedBox(
               width: 5,
             ),
             // Sets
-            Chip(label: Text("${sets} Sets")),
+            Chip(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+              padding: EdgeInsets.symmetric(horizontal: 3),
+              side: BorderSide(color: Colors.white),
+                backgroundColor: Colors.deepPurpleAccent.shade200,
+                label: Text(
+                  "${sets} Sets",
+                  style: TextStyle(color: Colors.white),
+                )),
           ],
         ),
         trailing: Row(

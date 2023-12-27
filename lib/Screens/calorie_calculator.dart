@@ -59,10 +59,10 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Colors.deepPurple,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
-          backgroundColor: Colors.grey.shade300,
+          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Colors.deepPurple,
           elevation: 0,
         ),
         body: SingleChildScrollView(
@@ -71,6 +71,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
             Icon(
               Icons.calculate_rounded,
               size: 50,
+              color: Colors.white,
             ),
             SizedBox(
               height: 10,
@@ -81,7 +82,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                 Text(
                   "Calorie Calculator",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
@@ -93,7 +94,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
             Text(
               "Find out the exact amount of calories you need.",
               style: TextStyle(
-                  color: Colors.grey.shade900,
+                  color: Colors.white70,
                   fontSize: 15,
                   fontWeight: FontWeight.w400),
             ),
@@ -103,7 +104,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
             Text(
               "Take control of your daily calorie intake.",
               style: TextStyle(
-                  color: Colors.grey.shade900,
+                  color: Colors.white70,
                   fontSize: 13,
                   fontWeight: FontWeight.w400),
             ),
@@ -116,16 +117,17 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 controller: weightController,
+                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.number,
-                // controller: currentWeightController,
                 decoration: InputDecoration(
                     hintText: "Enter your current weight (in kgs)",
-                    fillColor: Colors.grey.shade300,
+                     hintStyle: TextStyle(color: Colors.white70),
+                    fillColor: Colors.deepPurpleAccent.shade200,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade900))),
+                        borderSide: BorderSide(color: Colors.white70))),
               ),
             ),
             SizedBox(
@@ -136,15 +138,17 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 controller: heightController,
+                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: "Enter your current height (in cms)",
-                    fillColor: Colors.grey.shade300,
+                     hintStyle: TextStyle(color: Colors.white70),
+                    fillColor: Colors.deepPurpleAccent.shade200,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade900))),
+                        borderSide: BorderSide(color: Colors.white70))),
               ),
             ),
             SizedBox(
@@ -155,15 +159,17 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 controller: ageController,
+                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: "Enter your current age",
-                    fillColor: Colors.grey.shade300,
+                     hintStyle: TextStyle(color: Colors.white70),
+                    fillColor: Colors.deepPurpleAccent.shade200,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade900))),
+                        borderSide: BorderSide(color: Colors.white70))),
               ),
             ),
             SizedBox(
@@ -177,10 +183,10 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                   RadioListTile(
                     title: const Text(
                       "Male",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white70),
                     ),
                     value: genders[0],
-                    activeColor: Colors.black,
+                    fillColor: MaterialStateProperty.all(Colors.white),
                     groupValue: selectedGender,
                     onChanged: (value) {
                       setState(() {
@@ -191,10 +197,10 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                   RadioListTile(
                     title: const Text(
                       "Female",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white70),
                     ),
                     value: genders[1],
-                    activeColor: Colors.black,
+                    fillColor: MaterialStateProperty.all(Colors.white),
                     groupValue: selectedGender,
                     onChanged: (value) {
                       setState(() {
@@ -210,8 +216,10 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
             ),
             ElevatedButton(
                 style: ButtonStyle(
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
                     padding: MaterialStateProperty.all(EdgeInsets.all(15)),
-                    backgroundColor: MaterialStateProperty.all(Colors.black)),
+                    backgroundColor: MaterialStateProperty.all(Colors.deepPurpleAccent.shade200)),
                 onPressed: () {
                   checkControllers();
                   
@@ -235,7 +243,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                 },
                 child: Text(
                   "Get Calorie requirement",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15, color: Colors.white),
                 )),
             SizedBox(
               height: 20,
@@ -246,11 +254,11 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                 children: [
                   Text(
                     "Required Calories per day (in gms) : $ReqCalories\gms",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   SizedBox(height: 10,),
-                  Text("Our diet plans offer advices that can help you ", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.grey.shade800),),
-                Text("achieve these requirements.", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.grey.shade800),)
+                  Text("Our diet plans offer advices that can help you ", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white70),),
+                Text("achieve these requirements.", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white70),)
                 ],
               ),
             )

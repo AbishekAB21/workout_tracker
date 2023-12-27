@@ -4,6 +4,8 @@ import 'package:workout_tracker/Screens/login_screen.dart';
 import 'package:workout_tracker/Screens/protein_calculator.dart';
 import 'package:workout_tracker/components/bulking_AlertBox.dart';
 import 'package:workout_tracker/components/cutting_AlerBox.dart';
+import 'package:workout_tracker/data/diet_data.dart';
+import 'package:workout_tracker/models/diet.dart';
 
 class DietPage extends StatefulWidget {
   DietPage({super.key});
@@ -12,8 +14,8 @@ class DietPage extends StatefulWidget {
   State<DietPage> createState() => _DietPageState();
 }
 
-// Admin side visiblity 
- bool isAdmin = LoginScreen().Admin;
+// Admin side visiblity
+bool isAdmin = LoginScreen().ifAdmin();
 
 class _DietPageState extends State<DietPage> {
   // Text editing controllers
@@ -48,10 +50,10 @@ class _DietPageState extends State<DietPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.deepPurple,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.grey.shade300,
+        iconTheme: IconThemeData(color: Colors.white70),
+        backgroundColor: Colors.deepPurple,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -61,6 +63,7 @@ class _DietPageState extends State<DietPage> {
             Icon(
               Icons.fastfood_rounded,
               size: 50,
+              color: Colors.white70,
             ),
             SizedBox(
               height: 10,
@@ -71,7 +74,7 @@ class _DietPageState extends State<DietPage> {
                 Text(
                   "Let us help you in picking the perfect diet plan.",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white70,
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
                 ),
@@ -86,7 +89,7 @@ class _DietPageState extends State<DietPage> {
                 Text(
                   "A healthy diet goes a long way in staying fit.",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white70,
                       fontSize: 15,
                       fontWeight: FontWeight.w400),
                 ),
@@ -100,16 +103,18 @@ class _DietPageState extends State<DietPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
+                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.number,
                 controller: currentWeightController,
                 decoration: InputDecoration(
                     hintText: "Enter your current weight (in kgs)",
-                    fillColor: Colors.grey.shade300,
+                    hintStyle: TextStyle(color: Colors.white54),
+                    fillColor: Colors.deepPurpleAccent.shade200,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.deepPurple)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade900))),
+                        borderSide: BorderSide(color: Colors.white54))),
               ),
             ),
             SizedBox(
@@ -118,16 +123,18 @@ class _DietPageState extends State<DietPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
+                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.number,
                 controller: desiredWeightController,
                 decoration: InputDecoration(
                     hintText: "Enter your desired weight (in kgs)",
-                    fillColor: Colors.grey.shade300,
+                    hintStyle: TextStyle(color: Colors.white54),
+                    fillColor: Colors.deepPurpleAccent.shade200,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.deepPurple)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade900))),
+                        borderSide: BorderSide(color: Colors.white54))),
               ),
             ),
             SizedBox(
@@ -137,7 +144,8 @@ class _DietPageState extends State<DietPage> {
             ElevatedButton(
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(Size(150, 42)),
-                    backgroundColor: MaterialStateProperty.all(Colors.black)),
+                    backgroundColor: MaterialStateProperty.all(
+                        Colors.deepPurpleAccent.shade200)),
                 onPressed: () {
                   String CurrentWeight = currentWeightController.text;
                   String DesiredWeight = desiredWeightController.text;
@@ -161,23 +169,25 @@ class _DietPageState extends State<DietPage> {
                 },
                 child: Text(
                   "Get diet plan",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15, color: Colors.white),
                 )),
-
+            SizedBox(
+              height: 20,
+            ),
 //----------For Admin Only----------
             Visibility(
               visible: true,
               child: ElevatedButton(
                   style: ButtonStyle(
                       fixedSize: MaterialStateProperty.all(Size(180, 42)),
-                      backgroundColor: MaterialStateProperty.all(Colors.black)),
+                      backgroundColor: MaterialStateProperty.all(
+                          Colors.deepPurpleAccent.shade200)),
                   onPressed: () {
                     // Show Alert box with text fields
                     // text fields takes new cutTips/plan
                     // passes it using text controller to the funtion
                     // function then saves it to hive
                     // call the cutTips as strings in the text widgets below
-
                     showDialog(
                       context: context,
                       builder: (context) {
@@ -188,17 +198,19 @@ class _DietPageState extends State<DietPage> {
                           tip4: cutTip4,
                           tip5: cutTip5,
                         );
-                      }, 
+                      },
                     );
                   },
-                  child: Text('Edit cutting diet details')),
+                  child: Text('Edit cutting diet details',
+                      style: TextStyle(color: Colors.white, fontSize: 12))),
             ),
             Visibility(
               visible: true,
               child: ElevatedButton(
                   style: ButtonStyle(
                       fixedSize: MaterialStateProperty.all(Size(180, 42)),
-                      backgroundColor: MaterialStateProperty.all(Colors.black)),
+                      backgroundColor: MaterialStateProperty.all(
+                          Colors.deepPurpleAccent.shade200)),
                   onPressed: () {
                     // Show Alert box with text fields
                     // text fields takes new cutTips/plan
@@ -213,7 +225,10 @@ class _DietPageState extends State<DietPage> {
                       },
                     );
                   },
-                  child: Text('Edit bulking diet details')),
+                  child: Text(
+                    'Edit bulking diet details',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  )),
             ),
 //----------For Admin Only----------
 
@@ -243,7 +258,7 @@ class _DietPageState extends State<DietPage> {
                 Text(
                   "To find out the exact amount of Protein you need,",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white70,
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
                 ),
@@ -258,7 +273,7 @@ class _DietPageState extends State<DietPage> {
                 Text(
                   "Use our Protein Calculator.",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white70,
                       fontSize: 15,
                       fontWeight: FontWeight.w400),
                 ),
@@ -272,7 +287,8 @@ class _DietPageState extends State<DietPage> {
             ElevatedButton(
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(Size(180, 42)),
-                    backgroundColor: MaterialStateProperty.all(Colors.black)),
+                    backgroundColor: MaterialStateProperty.all(
+                        Colors.deepPurpleAccent.shade200)),
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -292,7 +308,7 @@ class _DietPageState extends State<DietPage> {
                 Text(
                   "To find out the exact amount of Calories you need,",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white70,
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
                 ),
@@ -307,7 +323,7 @@ class _DietPageState extends State<DietPage> {
                 Text(
                   "Use our Calorie Calculator.",
                   style: TextStyle(
-                      color: Colors.grey.shade900,
+                      color: Colors.white70,
                       fontSize: 15,
                       fontWeight: FontWeight.w400),
                 ),
@@ -321,7 +337,8 @@ class _DietPageState extends State<DietPage> {
             ElevatedButton(
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(Size(180, 42)),
-                    backgroundColor: MaterialStateProperty.all(Colors.black)),
+                    backgroundColor: MaterialStateProperty.all(
+                        Colors.deepPurpleAccent.shade200)),
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -380,11 +397,12 @@ class _cutting extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text("1. " /* + DietData().CutDietTips[0].CutTip1 */),
+                for (int i = 0; i < DietData().cutDietTips.length; i++)
+                  Text("${i + 1}. " + DietData().cutDietTips[i].CutTip1),
                 SizedBox(
                   height: 5,
                 ),
-                Text("2. " /* +  DietData().CutDietTips[1].CutTip2 */),
+                Text("2. " /* +  DietData().cutDietTips[1].CutTip2 */),
                 SizedBox(
                   height: 5,
                 ),

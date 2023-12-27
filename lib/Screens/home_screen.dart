@@ -5,10 +5,12 @@ import 'package:workout_tracker/Screens/bmi_calculator.dart';
 import 'package:workout_tracker/Screens/calorie_calculator.dart';
 import 'package:workout_tracker/Screens/diet_page.dart';
 import 'package:workout_tracker/Screens/login_screen.dart';
+import 'package:workout_tracker/Screens/new_homescreen.dart';
 import 'package:workout_tracker/Screens/protein_calculator.dart';
 import 'package:workout_tracker/Screens/splash_screen.dart';
 import 'package:workout_tracker/Screens/workout_history.dart';
 import 'package:workout_tracker/Screens/workout_screen.dart';
+import 'package:workout_tracker/components/curved_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   //bool isAdmin;
@@ -28,7 +30,7 @@ class HomeScreen extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => WorkoutScreen(),
+          builder: (context) => WorkoutScreen(admin: true,),
         ));
   }
 
@@ -59,7 +61,7 @@ class HomeScreen extends StatelessWidget {
 
   // Go to Calorie Calculator screen
   void gotoCalorieCalcScreen(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => CalorieCalculator(),));
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>BMICalculator(),));
   }
 
   @override
@@ -106,15 +108,15 @@ class HomeScreen extends StatelessWidget {
         .toList();
 
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.deepPurple,
       appBar: _homeScreenAppBar(),
-      // drawer: WorkoutScreenDrawer(),
+      bottomNavigationBar: CurvedNavBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Carousel Slider
             Container(
-                margin: EdgeInsets.only(top: 5),
+                margin: EdgeInsets.only(top: 2),
                 child: CarouselSlider(
                   options: CarouselOptions(
                     aspectRatio: 1.5,
@@ -135,15 +137,15 @@ class HomeScreen extends StatelessWidget {
               onTap: () => gotoWorkoutScreen(context),
               leading: Icon(
                 Icons.sports_gymnastics,
-                color: Colors.black,
+                color: Colors.white,
               ),
               title: Text(
                 "Workouts",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               trailing: IconButton(
                   onPressed: () => gotoWorkoutScreen(context),
-                  icon: Icon(Icons.arrow_forward_ios_outlined)),
+                  icon: Icon(Icons.arrow_forward_ios_outlined, color: Colors.white)),
             ),
             SizedBox(
               height: 10,
@@ -154,15 +156,15 @@ class HomeScreen extends StatelessWidget {
               onTap: () => gotoDietPlanScreen(context),
               leading: Icon(
                 Icons.fastfood_rounded,
-                color: Colors.black,
+                color: Colors.white,
               ),
               title: Text(
                 "Diet Plan",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               trailing: IconButton(
                   onPressed: () => gotoDietPlanScreen(context),
-                  icon: Icon(Icons.arrow_forward_ios_outlined)),
+                  icon: Icon(Icons.arrow_forward_ios_outlined, color: Colors.white)),
             ),
             SizedBox(
               height: 10,
@@ -173,55 +175,55 @@ class HomeScreen extends StatelessWidget {
               onTap: () => gotoBMIScreen(context),
               leading: Icon(
                 Icons.calculate_rounded,
-                color: Colors.black,
+                color: Colors.white,
               ),
               title: Text(
                 "BMI Calculator",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               trailing: IconButton(
                   onPressed: () => gotoBMIScreen(context),
-                  icon: Icon(Icons.arrow_forward_ios_outlined)),
+                  icon: Icon(Icons.arrow_forward_ios_outlined, color: Colors.white)),
             ),
             SizedBox(
               height: 10,
             ),
 
             // Options for Navigation to workout history page
-            Visibility(
-              visible: true,
-              child: ListTile(
-                onTap: () => gotoWorkoutHistory(context),
-                leading: Icon(
-                  Icons.history_rounded,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  "Workout history",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                trailing: IconButton(
-                    onPressed: () => gotoWorkoutHistory(context),
-                    icon: Icon(Icons.arrow_forward_ios_outlined)),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ListTile(
-              onTap: () => gotoProteinCalcScreen(context),
-              leading: Icon(
-                Icons.calculate_rounded,
-                color: Colors.black,
-              ),
-              title: Text(
-                "Protein  Calculator",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              trailing: IconButton(
-                  onPressed: () => gotoProteinCalcScreen(context),
-                  icon: Icon(Icons.arrow_forward_ios_outlined)),
-            ),
+            // Visibility(
+            //   visible: true,
+            //   child: ListTile(
+            //     onTap: () => gotoWorkoutHistory(context),
+            //     leading: Icon(
+            //       Icons.history_rounded,
+            //       color: Colors.black,
+            //     ),
+            //     title: Text(
+            //       "Workout history",
+            //       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //     ),
+            //     trailing: IconButton(
+            //         onPressed: () => gotoWorkoutHistory(context),
+            //         icon: Icon(Icons.arrow_forward_ios_outlined)),
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // ListTile(
+            //   onTap: () => gotoProteinCalcScreen(context),
+            //   leading: Icon(
+            //     Icons.calculate_rounded,
+            //     color: Colors.black,
+            //   ),
+            //   title: Text(
+            //     "Protein  Calculator",
+            //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //   ),
+            //   trailing: IconButton(
+            //       onPressed: () => gotoProteinCalcScreen(context),
+            //       icon: Icon(Icons.arrow_forward_ios_outlined)),
+            // ),
             SizedBox(
               height: 10,
             ),
@@ -232,7 +234,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.black,
               ),
               title: Text(
-                "Calorie  Calculator",
+                "New Home",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               trailing: IconButton(
@@ -254,14 +256,9 @@ class _homeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        "Fitness App",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      ),
-      centerTitle: true,
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.deepPurple,
       elevation: 0,
-      toolbarHeight: 60,
+      toolbarHeight: 30,
       actions: [
         IconButton(
             onPressed: () {
@@ -270,7 +267,7 @@ class _homeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    backgroundColor: Colors.black,
+                    backgroundColor: Colors.deepPurple,
                     content: Text("Are you sure you want to log out ?",
                         style: TextStyle(color: Colors.white)),
                     title: Text(
@@ -317,7 +314,7 @@ class _homeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               //       builder: (context) => LoginScreen(),
               //     ));
             },
-            icon: Icon(Icons.logout_rounded))
+            icon: Icon(Icons.logout_rounded, color: Colors.white,))
       ],
     );
   }

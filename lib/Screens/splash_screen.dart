@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workout_tracker/Screens/home_screen.dart';
 import 'package:workout_tracker/Screens/login_screen.dart';
+import 'package:workout_tracker/Screens/new_homescreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -52,7 +53,7 @@ void whereToGo(BuildContext context) async{
     if(isloggedin != null){
       if(isloggedin){
        Navigator.pushReplacement(context, MaterialPageRoute
-       (builder: (context) => HomeScreen(),));
+       (builder: (context) => HomeScreenMachTwo(isAdmin: LoginScreen().isAdmin),));
       }else{
         Navigator.pushReplacement(context, MaterialPageRoute
        (builder: (context) => LoginScreen(),));

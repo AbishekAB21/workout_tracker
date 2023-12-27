@@ -21,7 +21,7 @@ class WorkouHeatMap extends StatelessWidget {
           datasets: datasets,
           colorMode: ColorMode.color,
           defaultColor: Colors.green.shade700,
-          textColor: Colors.black,
+          textColor: Colors.white,
           showColorTip: false,
           showText: true,
           scrollable: true,

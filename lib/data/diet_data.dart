@@ -3,51 +3,78 @@ import 'package:workout_tracker/data/hive_database.dart';
 import 'package:workout_tracker/models/diet.dart';
 
 class DietData extends ChangeNotifier{
-final diet_database = HiveDatabase();
+final dietDatabase = HiveDatabase();
 
-List <CutDiet> CutDietTips = [];
-List <BulkDiet> BulkDietTips = [];
+//Download method
+final diet_file_path = HiveDatabase();
+
+List <CutDiet> cutDietTips = [];
+List <BulkDiet> bulkDietTips = [];
+
+String CuttingPlan = "";
+String BulkingPlan = "";
 
 // Check if previous data exists in the list. if yes then use readfromdatabase()
 // Else save the empty list into the database 
 // first make a function called previousDataExists in Hive for diet CUT and BULK
 
-// Cutting 
- void initializeCutList(){
-  // if previousDataExists() returns true
-  if(diet_database.previousCutDietData() == true){
-    CutDietTips = diet_database.readFromDietDatabase();
-  } 
-  // if previousDataExists() returns false
-  else{
-    diet_database.saveCuttingdiet(CutDietTips);
+
+  // Check if previous data exists in the list. If yes, use readFromDatabase().
+  // Else, save the empty list into the database.
+  Future<void> initializeCutList() async {
+    if (await dietDatabase.previousCutDietData()) {
+      cutDietTips = dietDatabase.readFromDietDatabase();
+    } else {
+      dietDatabase.saveCuttingdiet(cutDietTips);
+    }
   }
- }
 
-// Add Cutting tips
-addCutTip(String tip1, String tip2, String tip3, String tip4, String tip5){
-  CutDietTips.add(CutDiet( 
-    CutTip1: tip1, 
-    CutTip2: tip2, 
-    CutTip3: tip3, 
-    CutTip4: tip4, 
-    CutTip5: tip5,
-  ));
-  notifyListeners();
 
- diet_database.saveCuttingdiet(CutDietTips);
+ // Add Cutting tips
+  void addCutTip(String tip1, String tip2, String tip3, String tip4, String tip5) {
+    cutDietTips.add(CutDiet(
+      CutTip1: tip1,
+      CutTip2: tip2,
+      CutTip3: tip3,
+      CutTip4: tip4,
+      CutTip5: tip5,
+    ));
+   // notifyListeners();
+    
+    dietDatabase.saveCuttingdiet(cutDietTips);
+  }
+
+  // Add Bulking tips
+  void addBulkingTips(String tip1, String tip2, String tip3, String tip4, String tip5) {
+    bulkDietTips.add(BulkDiet(
+      BulkTip1: tip1,
+      BulkTip2: tip2,
+      BulkTip3: tip3,
+      BulkTip4: tip4,
+      BulkTip5: tip5,
+    ));
+    // notifyListeners();
+
+    // dietDatabase.saveBulkingPlan(bulkDietTips);
+  }
+
+
+
+// ------ Download Method ------
+void addCutPlanPath(String CuttingPlanFilePath){
+ 
+ CutFile(cutFilePath: CuttingPlanFilePath);
+
+ // Save to databse 
+ diet_file_path.saveFilePath(CuttingPlanFilePath);
+ CuttingPlan = CuttingPlanFilePath;
 }
 
-// Add Bulking tips
-addBulkingTips(String tip1, String tip2, String tip3, String tip4, String tip5){
-  BulkDietTips.add(BulkDiet( BulkTip1: tip1, 
-    BulkTip2: tip2, 
-    BulkTip3: tip3, 
-    BulkTip4: tip4, 
-    BulkTip5: tip5,
-  ));
-  notifyListeners();
+void addBulkPlanPath(String BulkingPlanFilePath){
+  BulkFile(bulkFilePath: BulkingPlanFilePath);
 
-  // diet_database.saveBulkingPlan(BulkDietTips);
+  // Save to database
+  diet_file_path.saveFilePath(BulkingPlanFilePath);
+  BulkingPlan = BulkingPlanFilePath;
 }
 }

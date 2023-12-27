@@ -35,6 +35,9 @@ class _WorkoutHistoryPageState extends State<WorkoutHistoryPage> {
                       ),
                 ),
                 separatorBuilder: (context, index) => Divider(),
-                itemCount: WorkoutData().workoutList.length)));
+                itemCount: WorkoutData().db.readFromDatabase().length
+                )
+                )
+                );
   }
 }

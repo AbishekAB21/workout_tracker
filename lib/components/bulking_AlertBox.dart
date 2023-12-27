@@ -8,7 +8,7 @@ class BulkingAlertBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.deepPurple,
       title: Text(
         "Edit Diet Plan (Bulking)",
         style: TextStyle(color: Colors.white),
@@ -21,14 +21,16 @@ class BulkingAlertBox extends StatelessWidget {
               
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "First tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -38,14 +40,16 @@ class BulkingAlertBox extends StatelessWidget {
               
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Second tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -55,14 +59,16 @@ class BulkingAlertBox extends StatelessWidget {
               
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Third tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -72,14 +78,16 @@ class BulkingAlertBox extends StatelessWidget {
               
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Fourth tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
             SizedBox(
@@ -89,14 +97,16 @@ class BulkingAlertBox extends StatelessWidget {
               
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
+                fillColor: Colors.deepPurpleAccent.shade200,
+                filled: true,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.deepPurple)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey)),
+                    borderSide: BorderSide(color: Colors.white70)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Fifth tip",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Colors.white54),
               ),
             ),
           ],

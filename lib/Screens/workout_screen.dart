@@ -1,19 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:workout_tracker/Screens/bmi_calculator.dart';
-import 'package:workout_tracker/Screens/diet_page.dart';
-import 'package:workout_tracker/Screens/workout_history.dart';
 import 'package:workout_tracker/Screens/exercise_screen.dart';
-import 'package:workout_tracker/Screens/workout_planner.dart';
 import 'package:workout_tracker/components/heat_map.dart';
 import 'package:workout_tracker/components/workout_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';
-import 'package:workout_tracker/models/workouts.dart';
 
 class WorkoutScreen extends StatefulWidget {
-  // bool isAdmin;
-  WorkoutScreen({super.key,});
+  bool admin;
+  WorkoutScreen({super.key, required this.admin});
 
   @override
   State<WorkoutScreen> createState() => _WorkoutScreenState();
@@ -21,10 +15,21 @@ class WorkoutScreen extends StatefulWidget {
 
 class _WorkoutScreenState extends State<WorkoutScreen> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
 
     Provider.of<WorkoutData>(context, listen: false).initializeWorkoutList();
+    uservisiblity();
+  }
+
+// Visiblity
+  bool isUser = false;
+  void uservisiblity() {
+    if (widget.admin == true) {
+      isUser = false;
+    } else if (widget.admin == false) {
+      isUser = true;
+    }
   }
 
 // Form key
@@ -40,7 +45,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.deepPurple,
         title: Text(
           "Create New Workout",
           style: TextStyle(color: Colors.white),
@@ -56,14 +61,16 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
             },
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.deepPurpleAccent.shade200,
               enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey)),
+                  borderSide: BorderSide(color: Colors.deepPurple)),
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey)),
+                  borderSide: BorderSide(color: Colors.white70)),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               hintText: "Enter New Workout Name",
-              hintStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
             ),
             controller: newWorkoutNameController,
           ),
@@ -125,20 +132,38 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.deepPurple,
           //drawer: WorkoutScreenDrawer(),
           appBar: AppBar(
-            backgroundColor: Colors.black,
-            title: Text("General Workouts"),
+            backgroundColor: Colors.deepPurple,
+            //title: Text("General Workouts", style: TextStyle(color: Colors.white),),
+            iconTheme: IconThemeData(color: Colors.white),
             centerTitle: true,
+            elevation: 0,
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.deepPurpleAccent.shade200,
             onPressed: createNewWorkout,
-            child: Icon(Icons.add),
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
           ),
           body: ListView(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.sports_gymnastics_rounded,
+                    color: Colors.white70,
+                    size: 50,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
               // Heat Map
               WorkouHeatMap(
                 datasets: value.heatmapset,
@@ -156,7 +181,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   // Calls the WorkoutTile page and passes the workout name as parameter
                   itemBuilder: (context, index) => WorkoutTile(
                         workoutName: value.getWorkoutList()[index].name,
-                        isvisible: false,
+                        isvisible: !isUser,
                         delete: IconButton(
                             onPressed: () {
                               String workoutName =
@@ -165,10 +190,10 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    backgroundColor: Colors.black,
+                                    backgroundColor: Colors.deepPurple,
                                     content: Text(
                                       "Are you sure you want to delete $workoutName ?",
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Colors.white70),
                                     ),
                                     actions: [
                                       // Yes
@@ -207,19 +232,22 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    backgroundColor: Colors.black,
+                                    backgroundColor: Colors.deepPurple,
                                     title: Text("Edit Workout Name",
                                         style: TextStyle(color: Colors.white)),
                                     content: TextField(
                                       controller: editController,
                                       style: TextStyle(color: Colors.white),
                                       decoration: InputDecoration(
+                                        fillColor:
+                                            Colors.deepPurpleAccent.shade200,
+                                        filled: true,
                                         enabledBorder: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.grey)),
+                                            borderSide: BorderSide(
+                                                color: Colors.deepPurple)),
                                         focusedBorder: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.grey)),
+                                            borderSide: BorderSide(
+                                                color: Colors.white70)),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(10)),
@@ -260,79 +288,6 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                       )),
             ],
           )),
-    );
-  }
-}
-
-class WorkoutScreenDrawer extends StatelessWidget {
-  const WorkoutScreenDrawer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Colors.grey[700],
-      child: Container(
-        margin: EdgeInsets.only(top: 60, bottom: 60),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WorkoutHistoryPage(),
-                    ));
-              },
-              child: Row(
-                children: [Icon(Icons.history), Text(" Workout History")],
-              ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WorkoutPlanner(),
-                    ));
-              },
-              child: Row(
-                children: [
-                  Icon(Icons.list_alt_sharp),
-                  Text(" Personal Workout Plan")
-                ],
-              ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BMICalculator(),
-                    ));
-              },
-              child: Row(
-                children: [Icon(Icons.fastfood_rounded), Text(" Diet plan")],
-              ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BMICalculator(),
-                    ));
-              },
-              child: Row(
-                children: [Icon(Icons.calculate), Text(" BMI Calculator")],
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
