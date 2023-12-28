@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/bmi_calculator.dart';
-import 'package:workout_tracker/Screens/calorie_calculator.dart';
-import 'package:workout_tracker/Screens/protein_calculator.dart';
+import 'package:workout_tracker/screens/bmi_calculator.dart';
+import 'package:workout_tracker/screens/calorie_calculator.dart';
+import 'package:workout_tracker/screens/protein_calculator.dart';
 
 class Calculators extends StatefulWidget {
   const Calculators({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/data_collection_widgets/gender_radio_tile.dart';
-import 'package:workout_tracker/Screens/data_collection_widgets/get_started-button.dart';
-import 'package:workout_tracker/Screens/data_collection_widgets/goals_container.dart';
-import 'package:workout_tracker/Screens/data_collection_widgets/textfields.dart';
-import 'package:workout_tracker/Screens/data_collection_widgets/top_icon_text.dart';
+import 'package:workout_tracker/screens/data_collection_widgets/gender_radio_tile.dart';
+import 'package:workout_tracker/screens/data_collection_widgets/get_started-button.dart';
+import 'package:workout_tracker/screens/data_collection_widgets/goals_container.dart';
+import 'package:workout_tracker/screens/data_collection_widgets/textfields.dart';
+import 'package:workout_tracker/screens/data_collection_widgets/top_icon_text.dart';
 
 class DataCollectionScreen extends StatefulWidget {
   DataCollectionScreen({super.key});

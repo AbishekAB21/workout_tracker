@@ -1,15 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workout_tracker/Screens/bmi_calculator.dart';
-import 'package:workout_tracker/Screens/calorie_calculator.dart';
-import 'package:workout_tracker/Screens/diet_page.dart';
-import 'package:workout_tracker/Screens/login_screen.dart';
-import 'package:workout_tracker/Screens/new_homescreen.dart';
-import 'package:workout_tracker/Screens/protein_calculator.dart';
-import 'package:workout_tracker/Screens/splash_screen.dart';
-import 'package:workout_tracker/Screens/workout_history.dart';
-import 'package:workout_tracker/Screens/workout_screen.dart';
+import 'package:workout_tracker/screens/bmi_calculator.dart';
+import 'package:workout_tracker/screens/calorie_calculator.dart';
+import 'package:workout_tracker/screens/diet_page.dart';
+import 'package:workout_tracker/screens/login_screen.dart';
+import 'package:workout_tracker/screens/new_homescreen.dart';
+import 'package:workout_tracker/screens/protein_calculator.dart';
+import 'package:workout_tracker/screens/splash_screen.dart';
+import 'package:workout_tracker/screens/workout_history.dart';
+import 'package:workout_tracker/screens/workout_screen.dart';
 import 'package:workout_tracker/components/curved_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {

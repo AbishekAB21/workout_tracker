@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workout_tracker/HomeScreenWidgets%20/calculators.dart';
-import 'package:workout_tracker/HomeScreenWidgets%20/water_tracker.dart';
-import 'package:workout_tracker/HomeScreenWidgets%20/workout_diet.dart';
-import 'package:workout_tracker/Screens/login_screen.dart';
-import 'package:workout_tracker/Screens/settings_screen.dart';
-import 'package:workout_tracker/Screens/splash_screen.dart';
+import 'package:workout_tracker/homeScreen_widgets/calculators.dart';
+import 'package:workout_tracker/homeScreen_widgets/water_tracker.dart';
+import 'package:workout_tracker/homeScreen_widgets/workout_diet.dart';
+import 'package:workout_tracker/screens/login_screen.dart';
+import 'package:workout_tracker/screens/settings_screen.dart';
+import 'package:workout_tracker/screens/splash_screen.dart';
 import 'package:workout_tracker/components/curved_nav_bar.dart';
 
 // URL Launcher

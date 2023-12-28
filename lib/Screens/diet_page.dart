@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/calorie_calculator.dart';
-import 'package:workout_tracker/Screens/login_screen.dart';
-import 'package:workout_tracker/Screens/protein_calculator.dart';
+import 'package:workout_tracker/screens/calorie_calculator.dart';
+import 'package:workout_tracker/screens/login_screen.dart';
+import 'package:workout_tracker/screens/protein_calculator.dart';
 import 'package:workout_tracker/components/bulking_AlertBox.dart';
 import 'package:workout_tracker/components/cutting_AlerBox.dart';
 import 'package:workout_tracker/data/diet_data.dart';

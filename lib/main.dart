@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:workout_tracker/Screens/splash_screen.dart';
+import 'package:workout_tracker/screens/splash_screen.dart';
 import 'package:workout_tracker/data/workout_data.dart';
 
 void main() async{

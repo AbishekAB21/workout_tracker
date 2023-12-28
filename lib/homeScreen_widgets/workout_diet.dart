@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/newdiet_page.dart';
-import 'package:workout_tracker/Screens/workout_screen.dart';
+import 'package:workout_tracker/screens/newdiet_page.dart';
+import 'package:workout_tracker/screens/workout_screen.dart';
 
 class WorkoutAndDiet extends StatefulWidget {
   bool admin;

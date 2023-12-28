@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/DietPageWidgets/bulking_plan_AlertBox.dart';
-import 'package:workout_tracker/DietPageWidgets/cutting_plan_AlertBox.dart';
-import 'package:workout_tracker/DietPageWidgets/downlaod_tile.dart';
+import 'package:workout_tracker/dietPage_widgets.dart/bulking_plan_AlertBox.dart';
+import 'package:workout_tracker/dietPage_widgets.dart/cutting_plan_AlertBox.dart';
+import 'package:workout_tracker/dietPage_widgets.dart/downlaod_tile.dart';
 import 'package:workout_tracker/data/diet_data.dart';
 
 class DietPlannerPage extends StatefulWidget {

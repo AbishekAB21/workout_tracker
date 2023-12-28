@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/new_homescreen.dart';
+import 'package:workout_tracker/screens/new_homescreen.dart';
 
 class GetStartedButton extends StatelessWidget {
   const GetStartedButton({super.key});

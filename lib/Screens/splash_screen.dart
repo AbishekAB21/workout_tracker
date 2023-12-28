@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workout_tracker/Screens/data_collection_screen.dart';
-import 'package:workout_tracker/Screens/home_screen.dart';
-import 'package:workout_tracker/Screens/login_screen.dart';
-import 'package:workout_tracker/Screens/new_homescreen.dart';
+import 'package:workout_tracker/screens/data_collection_screen.dart';
+import 'package:workout_tracker/screens/home_screen.dart';
+import 'package:workout_tracker/screens/login_screen.dart';
+import 'package:workout_tracker/screens/new_homescreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

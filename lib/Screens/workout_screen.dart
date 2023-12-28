@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:workout_tracker/Screens/exercise_screen.dart';
+import 'package:workout_tracker/screens/exercise_screen.dart';
 import 'package:workout_tracker/components/heat_map.dart';
 import 'package:workout_tracker/components/workout_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';

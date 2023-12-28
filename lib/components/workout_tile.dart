@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/exercise_screen.dart';
+import 'package:workout_tracker/screens/exercise_screen.dart';
 
 class WorkoutTile extends StatelessWidget {
   String workoutName;
