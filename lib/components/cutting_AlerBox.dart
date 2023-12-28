@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:workout_tracker/data/diet_data.dart';
 
+// ignore: must_be_immutable
 class CuttingAlertBox extends StatelessWidget {
   CuttingAlertBox({
     super.key,

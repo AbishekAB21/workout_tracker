@@ -50,6 +50,6 @@ class _BulkBoxState extends State<BulkBox> {
             },
             child: Text("Cancel", style: TextStyle(color: Colors.white70)))
       ],
-    );;
+    );
   }
 }

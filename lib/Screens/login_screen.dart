@@ -13,25 +13,25 @@ class LoginScreen extends StatelessWidget {
   final passwordController = TextEditingController();
 
   // visiblity
-  static const String AdminKey = "visible";
-  bool isAdmin = false;
-  bool ifAdmin() {
-    String username = usernameController.text;
-    String password = passwordController.text;
-    if (username == "Admin" && password == "AdminPass") {
-      bool Admin = true;
-      return Admin;
-    } else {
-      bool Admin = false;
-      return Admin;
-    }
-  }
+  // static const String AdminKey = "visible";
+  // final bool isAdmin = false;
+  // bool ifAdmin() {
+  //  final String username = usernameController.text;
+  //  final String password = passwordController.text;
+  //   if (username == "Admin" && password == "AdminPass") {
+  //     bool Admin = true;
+  //     return Admin;
+  //   } else {
+  //     bool Admin = false;
+  //     return Admin;
+  //   }
+  // }
 
   // check if Admin or User
   void loginCheck(BuildContext context) async {
     if (usernameController.text == "Admin" &&
         passwordController.text == "AdminPass") {
-      bool AdminLoggedin = ifAdmin();
+      // bool AdminLoggedin = ifAdmin();
       // Already logged in then stay logged in until logged out
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               builder: (context) => HomeScreenMachTwo()));
     } else if (usernameController.text == "User" &&
         passwordController.text == "UserPass") {
-      bool AdminLoggedin = ifAdmin();
+      // bool AdminLoggedin = ifAdmin();
       // Already logged in then stay logged in until logged out
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/screens/calorie_calculator.dart';
-import 'package:workout_tracker/screens/login_screen.dart';
 import 'package:workout_tracker/screens/protein_calculator.dart';
 import 'package:workout_tracker/components/bulking_AlertBox.dart';
 import 'package:workout_tracker/components/cutting_AlerBox.dart';
 import 'package:workout_tracker/data/diet_data.dart';
-import 'package:workout_tracker/models/diet.dart';
+
 
 class DietPage extends StatefulWidget {
   DietPage({super.key});
@@ -15,7 +14,7 @@ class DietPage extends StatefulWidget {
 }
 
 // Admin side visiblity
-bool isAdmin = LoginScreen().ifAdmin();
+// bool isAdmin = LoginScreen().ifAdmin();
 
 class _DietPageState extends State<DietPage> {
   // Text editing controllers

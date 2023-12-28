@@ -69,7 +69,7 @@ class _DownlaodTileState extends State<DownlaodTile> {
         ],
       ),
     );
-    ;
+    
   }
 
 // final Uri _url = Uri.parse('https://flutter.dev');
