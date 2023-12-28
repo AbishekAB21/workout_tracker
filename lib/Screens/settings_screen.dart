@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/screens/settings_screen_pages/profile_page.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -35,11 +36,19 @@ class SettingsScreen extends StatelessWidget {
             ),
             title: Text(
               "Profile",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600,),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfilePage(),
+                      ));
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios_rounded,
                   color: Colors.white,
@@ -47,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
                 )),
             onTap: () {},
           ),
-          ListTile( 
+          ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 20),
             leading: Icon(
               Icons.share_rounded,
@@ -68,7 +77,7 @@ class SettingsScreen extends StatelessWidget {
                 )),
             onTap: () {},
           ),
-           ListTile(
+          ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 20),
             leading: Icon(
               Icons.info_rounded,

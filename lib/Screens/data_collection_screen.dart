@@ -55,10 +55,12 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                 Flexible(
                     child: Textfields(
                         controller: displaynameController,
-                        hintText: "Display Name")),
+                        hintText: "Display Name",
+                        enableEditing: true,
+                        )),
                 Flexible(
                     child:
-                        Textfields(controller: ageController, hintText: "Age")),
+                        Textfields(controller: ageController, hintText: "Age", enableEditing: true,)),
               ],
             ),
             SizedBox(
@@ -70,11 +72,15 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                 Flexible(
                     child: Textfields(
                         controller: weightController,
-                        hintText: "Weight (in kgs)")),
+                        hintText: "Weight (in kgs)",
+                        enableEditing: true,
+                        )),
                 Flexible(
                     child: Textfields(
                         controller: heightController,
-                        hintText: "Height (in cms)")),
+                        hintText: "Height (in cms)",
+                        enableEditing: true,
+                        )),
               ],
             ),
             SizedBox(
