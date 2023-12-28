@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/screens/settings_screen_pages/about_us_popup.dart';
 import 'package:workout_tracker/screens/settings_screen_pages/profile_page.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -54,7 +55,13 @@ class SettingsScreen extends StatelessWidget {
                   color: Colors.white,
                   size: 20,
                 )),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ));
+            },
           ),
           ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 20),
@@ -90,13 +97,23 @@ class SettingsScreen extends StatelessWidget {
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AboutUsPopUp(),
+                  );
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios_rounded,
                   color: Colors.white,
                   size: 20,
                 )),
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => AboutUsPopUp(),
+              );
+            },
           ),
           SizedBox(
             height: 30,
