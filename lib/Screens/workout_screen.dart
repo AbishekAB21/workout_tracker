@@ -6,8 +6,8 @@ import 'package:workout_tracker/components/workout_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';
 
 class WorkoutScreen extends StatefulWidget {
-  bool admin;
-  WorkoutScreen({super.key, required this.admin});
+ 
+  WorkoutScreen({super.key,});
 
   @override
   State<WorkoutScreen> createState() => _WorkoutScreenState();
@@ -19,18 +19,9 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     super.initState();
 
     Provider.of<WorkoutData>(context, listen: false).initializeWorkoutList();
-    uservisiblity();
+   
   }
 
-// Visiblity
-  bool isUser = false;
-  void uservisiblity() {
-    if (widget.admin == true) {
-      isUser = false;
-    } else if (widget.admin == false) {
-      isUser = true;
-    }
-  }
 
 // Form key
   final textfieldkey = GlobalKey<FormState>();
@@ -181,7 +172,6 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   // Calls the WorkoutTile page and passes the workout name as parameter
                   itemBuilder: (context, index) => WorkoutTile(
                         workoutName: value.getWorkoutList()[index].name,
-                        isvisible: !isUser,
                         delete: IconButton(
                             onPressed: () {
                               String workoutName =

@@ -5,8 +5,8 @@ import 'package:workout_tracker/DietPageWidgets/downlaod_tile.dart';
 import 'package:workout_tracker/data/diet_data.dart';
 
 class DietPlannerPage extends StatefulWidget {
-  bool admin;
-  DietPlannerPage({super.key, required this.admin});
+
+  DietPlannerPage({super.key,});
 
   @override
   State<DietPlannerPage> createState() => _DietPlannerPageState();
@@ -135,60 +135,54 @@ class _DietPlannerPageState extends State<DietPlannerPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Visibility(
-                  visible: widget.admin,
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                          backgroundColor: MaterialStateProperty.all(
-                              Colors.deepPurpleAccent.shade200)),
-                      onPressed: () {
-                        // Alert box for entering new diet plan file path
-                        showDialog(
-                            context: context,
-                            builder: (context) => CutBox(
-                                cutDietPlanController: cutDietPlanController));
-
-                        // CuttingPlanURL
-                        // call the variable from hive here and give its data to cutdietplan
-                        CutDietPlan = DietData().CuttingPlan;
-                      },
-                      child: Text(
-                        "Edit Cutting Plan File",
-                        style: TextStyle(color: Colors.white),
-                      )),
-                ),
+                ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                        backgroundColor: MaterialStateProperty.all(
+                            Colors.deepPurpleAccent.shade200)),
+                    onPressed: () {
+                      // Alert box for entering new diet plan file path
+                      showDialog(
+                          context: context,
+                          builder: (context) => CutBox(
+                              cutDietPlanController: cutDietPlanController));
+                
+                      // CuttingPlanURL
+                      // call the variable from hive here and give its data to cutdietplan
+                      CutDietPlan = DietData().CuttingPlan;
+                    },
+                    child: Text(
+                      "Edit Cutting Plan File",
+                      style: TextStyle(color: Colors.white),
+                    )),
                 SizedBox(
                   width: 10,
                 ),
-                Visibility(
-                  visible: widget.admin,
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                          backgroundColor: MaterialStateProperty.all(
-                              Colors.deepPurpleAccent.shade200)),
-                      onPressed: () {
-                        // Alert box for entering new diet plan file path
-                        showDialog(
-                          context: context,
-                          builder: (context) => BulkBox(
-                              bulkDietPlanController: bulkDietPlanController),
-                        );
-
-                        // BulkingPlanURL
-                        // call the variable from hive here and give its data to Bulkplan
-                        BulkDietPlan = DietData().BulkingPlan;
-                      },
-                      child: Text(
-                        "Edit Bulking Plan File",
-                        style: TextStyle(color: Colors.white),
-                      )),
-                ),
+                ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                        backgroundColor: MaterialStateProperty.all(
+                            Colors.deepPurpleAccent.shade200)),
+                    onPressed: () {
+                      // Alert box for entering new diet plan file path
+                      showDialog(
+                        context: context,
+                        builder: (context) => BulkBox(
+                            bulkDietPlanController: bulkDietPlanController),
+                      );
+                
+                      // BulkingPlanURL
+                      // call the variable from hive here and give its data to Bulkplan
+                      BulkDietPlan = DietData().BulkingPlan;
+                    },
+                    child: Text(
+                      "Edit Bulking Plan File",
+                      style: TextStyle(color: Colors.white),
+                    )),
               ],
             ),
             SizedBox(
@@ -212,7 +206,7 @@ class _DietPlannerPageState extends State<DietPlannerPage> {
                   setState(() {
                     if (currentWeight > desiredWeight) {
                       // Filepath = Cutting diet plan file URL
-                      filePath = CutDietPlan;
+                      filePath = "https://www.dropbox.com/scl/fo/163b7i03efindxsicu8jm/h?rlkey=s3s6wc4ldypbba2cm9l6td3d7&dl=0";
 
                       if (CutDietPlan.isEmpty) {
                         print("Empty");
@@ -224,7 +218,7 @@ class _DietPlannerPageState extends State<DietPlannerPage> {
                       heading = "Download Cutting Diet Plan";
                     } else if (currentWeight < desiredWeight) {
                       // Filepath = Bulking diet plan file URL
-                      filePath = BulkDietPlan;
+                      filePath = "https://www.dropbox.com/scl/fo/az7zakrvvn42h7t4e5ybp/h?rlkey=v1b8kptkexrw6utoyouri5xo3&dl=0";
 
                       if (BulkDietPlan.isEmpty) {
                         print("Empty");

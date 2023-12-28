@@ -9,20 +9,31 @@ class CurvedNavBar extends StatefulWidget {
 }
 
 class _CurvedNavBarState extends State<CurvedNavBar> {
+
+  final items = const [
+    Icon(Icons.home, color: Colors.white,),
+    Icon(Icons.sports_gymnastics_rounded, color: Colors.white,),
+    Icon(Icons.fastfood_rounded, color: Colors.white,)
+  ];
+
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
       height: 70,
-      onTap: (index) {
-        
-      },
+      
       animationDuration: Duration(milliseconds: 300),
       backgroundColor: Colors.deepPurple,
       color: Colors.deepPurpleAccent.shade200, 
-      items: [
-        Icon(Icons.home, color: Colors.white,),
-        Icon(Icons.history, color: Colors.white,),
-        Icon(Icons.shopping_cart_rounded, color: Colors.white,)
-      ]);
+      items: items,
+      index: index,
+      onTap: (selectedindex) {
+        setState(() {
+           index = selectedindex ;
+        });
+
+      },
+      );
   }
 }

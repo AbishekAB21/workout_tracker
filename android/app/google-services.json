@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "708510002898",
+    "project_id": "signin-fitnessapp-688a8",
+    "storage_bucket": "signin-fitnessapp-688a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708510002898:android:e44da74757ddbafd4cc70b",
+        "android_client_info": {
+          "package_name": "com.example.workout_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-07eDB63u5eWRn4RhILC5-svSQdgolo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

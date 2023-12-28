@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker/Screens/diet_page.dart';
 import 'package:workout_tracker/Screens/newdiet_page.dart';
 import 'package:workout_tracker/Screens/workout_screen.dart';
 
@@ -61,7 +60,6 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => WorkoutScreen(
-                        admin: widget.admin,
                       ),
                     ));
               },
@@ -96,9 +94,7 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DietPlannerPage(
-                        admin: widget.admin,
-                      ),
+                      builder: (context) => DietPlannerPage(),
                     ));
                 // Navigator.push(context, MaterialPageRoute(builder: (context) => DietPage(),));
               },

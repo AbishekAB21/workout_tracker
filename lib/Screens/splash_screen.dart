@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workout_tracker/Screens/data_collection_screen.dart';
 import 'package:workout_tracker/Screens/home_screen.dart';
 import 'package:workout_tracker/Screens/login_screen.dart';
 import 'package:workout_tracker/Screens/new_homescreen.dart';
@@ -9,13 +10,11 @@ import 'package:workout_tracker/Screens/new_homescreen.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
-
   @override
   State<SplashScreen> createState() => SplashScreenState();
 }
 
 class SplashScreenState extends State<SplashScreen> {
-
   static const String keylogin = "login";
 
   @override
@@ -23,6 +22,7 @@ class SplashScreenState extends State<SplashScreen> {
     whereToGo(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,25 +43,28 @@ class SplashScreenState extends State<SplashScreen> {
   }
 }
 
-void whereToGo(BuildContext context) async{
- 
- var sharedpref = await SharedPreferences.getInstance();
- var isloggedin = sharedpref.getBool(SplashScreenState.keylogin);
+void whereToGo(BuildContext context) async {
+//  var sharedpref = await SharedPreferences.getInstance();
+//  var isloggedin = sharedpref.getBool(SplashScreenState.keylogin);
 
   Timer(Duration(seconds: 3), () {
+    // if(isloggedin != null){
+    //   if(isloggedin){
+    //    Navigator.pushReplacement(context, MaterialPageRoute
+    //    (builder: (context) => HomeScreenMachTwo(),));
+    //   }else{
+    //     Navigator.pushReplacement(context, MaterialPageRoute
+    //    (builder: (context) => LoginScreen(),));
+    //   }
+    // }else{
+    //     Navigator.pushReplacement(context, MaterialPageRoute
+    //    (builder: (context) => LoginScreen(),));
+    //   }
 
-    if(isloggedin != null){
-      if(isloggedin){
-       Navigator.pushReplacement(context, MaterialPageRoute
-       (builder: (context) => HomeScreenMachTwo(isAdmin: LoginScreen().isAdmin),));
-      }else{
-        Navigator.pushReplacement(context, MaterialPageRoute
-       (builder: (context) => LoginScreen(),));
-      }
-    }else{
-        Navigator.pushReplacement(context, MaterialPageRoute
-       (builder: (context) => LoginScreen(),));
-      }
-    
-    });
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DataCollectionScreen(),
+        ));
+  });
 }

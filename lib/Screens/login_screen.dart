@@ -27,7 +27,6 @@ class LoginScreen extends StatelessWidget {
     }
   }
 
-
   // check if Admin or User
   void loginCheck(BuildContext context) async {
     if (usernameController.text == "Admin" &&
@@ -37,14 +36,10 @@ class LoginScreen extends StatelessWidget {
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
 
-      // // Admin visiblity bool
-      // var isAdmin = await SharedPreferences.getInstance();
-      // isAdmin.getBool(AdminKey);
-      // Admin = isAdmin.setBool(AdminKey, true) as bool;
-      //Admin = true;
-
-     Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreenMachTwo(isAdmin: AdminLoggedin,)));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomeScreenMachTwo()));
     } else if (usernameController.text == "User" &&
         passwordController.text == "UserPass") {
       bool AdminLoggedin = ifAdmin();
@@ -52,14 +47,10 @@ class LoginScreen extends StatelessWidget {
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
 
-      // User visiblity bool
-      // var isAdmin = await SharedPreferences.getInstance();
-      // isAdmin.getBool(AdminKey);
-      // Admin = isAdmin.setBool(AdminKey, false) as bool;
-      //Admin = false;
-
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreenMachTwo(isAdmin: AdminLoggedin,)));
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomeScreenMachTwo()));
     } else if (usernameController.text.isEmpty &&
         passwordController.text.isEmpty) {
       // Show Snackbar
@@ -165,6 +156,29 @@ class LoginScreen extends StatelessWidget {
                 /*---User and Admin Sign In---*/
                 onTap: () => loginCheck(context),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "First time?",
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
+                      ))
+                ],
+              )
             ],
           ),
         ),

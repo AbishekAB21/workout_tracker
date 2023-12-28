@@ -3,13 +3,11 @@ import 'package:workout_tracker/Screens/exercise_screen.dart';
 
 class WorkoutTile extends StatelessWidget {
   String workoutName;
-  bool? isvisible;
   IconButton delete;
   IconButton edit;
   WorkoutTile({
     super.key,
     required this.workoutName,
-    required this.isvisible,
     required this.delete,
     required this.edit,
   });
@@ -42,8 +40,8 @@ class WorkoutTile extends StatelessWidget {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Visibility(visible: !isvisible!, child: delete),
-            Visibility(visible: !isvisible!, child: edit),
+            delete,
+            edit,
             IconButton(
                 onPressed: () => goToWorkoutPage(workoutName, context),
                 icon: Icon(Icons.arrow_forward_ios)),
