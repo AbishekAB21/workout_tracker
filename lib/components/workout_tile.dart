@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:workout_tracker/screens/exercise_screen.dart';
 
 class WorkoutTile extends StatelessWidget {
-  String workoutName;
-  IconButton delete;
-  IconButton edit;
+  final String workoutName;
+  final IconButton delete;
+  final IconButton edit;
   WorkoutTile({
     super.key,
     required this.workoutName,
@@ -47,7 +47,11 @@ class WorkoutTile extends StatelessWidget {
                 icon: Icon(Icons.arrow_forward_ios)),
           ],
         ),
-        leading: Icon(Icons.sports_gymnastics_rounded, color: Colors.white70 , size: 35,),
+        leading: Icon(
+          Icons.sports_gymnastics_rounded,
+          color: Colors.white70,
+          size: 35,
+        ),
       ),
     );
   }
