@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class Textfields extends StatelessWidget {
-  final controller;
+  final TextEditingController controller;
   final String hintText;
-  bool enableEditing;
+  final bool enableEditing;
   Textfields({super.key, required this.controller, required this.hintText, required this.enableEditing});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextField(
         controller: controller,
         enabled: enableEditing,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.deepPurple)),
+              borderSide: BorderSide(color: apptheme.primaryColor)),
           focusedBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.white54)),
           filled: true,
-          fillColor: Colors.deepPurpleAccent.shade200,
+          fillColor: apptheme.secondaryColor,
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.white54),
+          hintStyle: apptheme.hintText,
+          label: Text(hintText),
+          labelStyle: apptheme.labelText
         ),
       ),
     );

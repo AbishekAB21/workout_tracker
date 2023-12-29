@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/screens/new_homescreen.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class GetStartedButton extends StatelessWidget {
-  const GetStartedButton({super.key});
+  final VoidCallback onpress;
+  const GetStartedButton({super.key, required this.onpress});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
+          elevation: MaterialStateProperty.all(5),
             padding: MaterialStateProperty.all(
-                EdgeInsets.only(top: 20, bottom: 20, right: 50, left: 50)),
+                EdgeInsets.only(top: 30, bottom: 30, right: 80, left: 80)),
             backgroundColor:
-                MaterialStateProperty.all(Colors.deepPurpleAccent.shade200),
+                MaterialStateProperty.all(apptheme.secondaryColor),
             shape: MaterialStateProperty.all(ContinuousRectangleBorder(
                 borderRadius: BorderRadius.circular(13)))),
-        onPressed: () {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeScreenMachTwo(),
-              ));
-        },
+        onPressed: onpress, 
         child: Text(
           "Get Started",
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+          style: apptheme.titleText,
         ));
   }
 }
