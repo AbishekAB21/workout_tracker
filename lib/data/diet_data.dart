@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/data/hive_database.dart';
-import 'package:workout_tracker/models/diet.dart';
+import 'package:workout_tracker/models/diet_model.dart';
 
 class DietData extends ChangeNotifier{
 final dietDatabase = HiveDatabase();

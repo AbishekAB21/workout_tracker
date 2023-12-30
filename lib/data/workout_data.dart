@@ -46,7 +46,7 @@ class WorkoutData extends ChangeNotifier {
     loadHeatMap();
   }
 
-  // Get length of a given workout
+  // Get length of exercises a given workout
   int numberofExercisesInWorkout(String workoutName) {
     Workout relevantWorkout = getRelevantWorkout(workoutName);
     return relevantWorkout.exercises.length;

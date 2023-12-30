@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/homeScreen_widgets/calculators.dart';
 import 'package:workout_tracker/homeScreen_widgets/water_tracker.dart';
+import 'package:workout_tracker/homeScreen_widgets/workout_diet.dart';
 import 'package:workout_tracker/screens/settings_screen.dart';
 import 'package:workout_tracker/components/curved_nav_bar.dart';
 
 // URL Launcher
 
 class HomeScreenMachTwo extends StatefulWidget {
-  HomeScreenMachTwo({super.key,});
+  HomeScreenMachTwo({
+    super.key,
+  });
 
   @override
   State<HomeScreenMachTwo> createState() => _HomeScreenMachTwoState();
@@ -64,12 +67,10 @@ class _HomeScreenMachTwoState extends State<HomeScreenMachTwo> {
                 height: 15,
               ),
 // ---------------------- WORKOUT AND DIET ----------------------
-              // WorkoutAndDiet(
-              //   admin: widget.isAdmin,
-              // ),
-              // SizedBox(
-              //   height: 25,
-              // ),
+              WorkoutAndDiet(),
+              SizedBox(
+                height: 25,
+              ),
 // ---------------------- WATER TRACKER ----------------------
               WaterTracker(),
               // call the circular progress indicator for the water consumption
@@ -97,51 +98,16 @@ class _HomeScreenMachTwoState extends State<HomeScreenMachTwo> {
       actions: [
         IconButton(
             onPressed: () {
-              // showDialog(
-              //   context: context,
-              //   builder: (context) {
-              //     return AlertDialog(
-              //       backgroundColor: Colors.deepPurple,
-              //       content: Text("Are you sure you want to log out ?",
-              //           style: TextStyle(color: Colors.white)),
-              //       title: Text(
-              //         "Log off",
-              //         style: TextStyle(color: Colors.white),
-              //       ),
-              //       actions: [
-              //         // Yes
-              //         TextButton(
-              //             onPressed: () async {
-              //               // changes shared pref value to false from true
-              //               var sharedpref =
-              //                   await SharedPreferences.getInstance();
-              //               sharedpref.setBool(
-              //                   SplashScreenState.keylogin, false);
-
-              //               Navigator.pushReplacement(
-              //                   context,
-              //                   MaterialPageRoute(
-              //                     builder: (context) => LoginScreen(),
-              //                   ));
-              //             },
-              //             child: Text("Yes",
-              //                 style: TextStyle(color: Colors.white))),
-
-              //         // Cancel
-              //         TextButton(
-              //             onPressed: () {
-              //               Navigator.pop(context);
-              //             },
-              //             child: Text("Cancel",
-              //                 style: TextStyle(color: Colors.white70)))
-              //       ],
-              //     );
-              //   },
-              // );
-
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen(),));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsScreen(),
+                  ));
             },
-            icon: Icon(Icons.settings, color: Colors.white,))
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ))
       ],
     );
   }

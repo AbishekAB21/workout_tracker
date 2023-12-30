@@ -20,11 +20,14 @@ GenderEnum? _genderEnum;
 GoalEnum? _goalEnum;
 
 // Text Editing Controllers
-final displaynameController = TextEditingController();
-final ageController = TextEditingController();
+final TextEditingController displaynameController = TextEditingController();
+final TextEditingController ageController = TextEditingController();
+final TextEditingController weightController = TextEditingController();
+final TextEditingController heightController = TextEditingController();
 
 // Enable editing bool
 bool enableEditing = false;
+//bool result = false;
 
 class _ProfilePageState extends State<ProfilePage> {
   @override
@@ -39,8 +42,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 onPressed: () {
                   showDialog(
                       context: context,
-                      builder: (context) =>
-                          EditAlertBox(enableEditing: enableEditing));
+                      builder: (context) => EditAlertBox(
+                            enableEditing: enableEditing,
+                          ));
                 },
                 icon: Icon(Icons.edit_rounded))
           ],
@@ -77,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 10,
                       ),
                       Textfields(
-                        controller: displaynameController,
+                        controller: weightController,
                         hintText: profiles.values.first.weight.toString(),
                         enableEditing: enableEditing,
                       ),
@@ -85,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 10,
                       ),
                       Textfields(
-                        controller: ageController,
+                        controller: heightController,
                         hintText: profiles.values.first.height.toString(),
                         enableEditing: enableEditing,
                       ),

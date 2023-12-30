@@ -3,7 +3,11 @@ import 'package:workout_tracker/screens/settings_screen_pages/profile_page.dart'
 
 class EditAlertBox extends StatefulWidget {
   bool enableEditing;
-  EditAlertBox({super.key, required this.enableEditing});
+
+  EditAlertBox({
+    super.key,
+    required this.enableEditing,
+  });
 
   @override
   State<EditAlertBox> createState() => _EditAlertBoxState();
@@ -28,6 +32,7 @@ class _EditAlertBoxState extends State<EditAlertBox> {
               setState(() {
                 enableEditing = true;
               });
+
               Navigator.pop(context);
             },
             child: Text(

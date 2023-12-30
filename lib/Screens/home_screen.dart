@@ -6,7 +6,6 @@ import 'package:workout_tracker/screens/diet_page.dart';
 import 'package:workout_tracker/screens/login_screen.dart';
 import 'package:workout_tracker/screens/protein_calculator.dart';
 import 'package:workout_tracker/screens/splash_screen.dart';
-import 'package:workout_tracker/screens/workout_history.dart';
 import 'package:workout_tracker/screens/workout_screen.dart';
 import 'package:workout_tracker/components/curved_nav_bar.dart';
 
@@ -32,14 +31,14 @@ class HomeScreen extends StatelessWidget {
         ));
   }
 
-  // Go to Workout history Screen
-  void gotoWorkoutHistory(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => WorkoutHistoryPage(),
-        ));
-  }
+  // // Go to Workout history Screen
+  // void gotoWorkoutHistory(BuildContext context) {
+  //   Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => WorkoutHistoryPage(),
+  //       ));
+  // }
 
   // Go to Diet Plan Screen
   void gotoDietPlanScreen(BuildContext context) async {

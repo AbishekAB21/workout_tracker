@@ -3,8 +3,9 @@ import 'package:workout_tracker/screens/newdiet_page.dart';
 import 'package:workout_tracker/screens/workout_screen.dart';
 
 class WorkoutAndDiet extends StatefulWidget {
-  bool admin;
-  WorkoutAndDiet({super.key, required this.admin});
+  WorkoutAndDiet({
+    super.key,
+  });
 
   @override
   State<WorkoutAndDiet> createState() => _WorkoutAndDietState();
@@ -59,8 +60,7 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => WorkoutScreen(
-                      ),
+                      builder: (context) => WorkoutScreen(),
                     ));
               },
               child: Container(

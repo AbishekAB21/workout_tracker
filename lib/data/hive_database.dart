@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:workout_tracker/datetime/date_time.dart';
-import 'package:workout_tracker/models/diet.dart';
+import 'package:workout_tracker/models/diet_model.dart';
 import 'package:workout_tracker/models/exercise.dart';
 import 'package:workout_tracker/models/workouts.dart';
 
