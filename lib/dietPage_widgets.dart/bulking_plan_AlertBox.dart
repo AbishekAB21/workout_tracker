@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/data/diet_data.dart';
 
+// ignore: must_be_immutable
 class BulkBox extends StatefulWidget {
   TextEditingController bulkDietPlanController = TextEditingController();
    BulkBox({super.key, required this.bulkDietPlanController});

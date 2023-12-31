@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DownlaodTile extends StatefulWidget {
-  String heading;
-  String path;
+  final String heading;
+  final String path;
   DownlaodTile({super.key, required this.heading, required this.path});
 
   @override

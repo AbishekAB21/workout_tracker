@@ -1,35 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meals.dart';
+part of 'lunch.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class MealsAdapter extends TypeAdapter<Meals> {
+class LunchAdapter extends TypeAdapter<Lunch> {
   @override
-  final int typeId = 2;
+  final int typeId = 3;
 
   @override
-  Meals read(BinaryReader reader) {
+  Lunch read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Meals(
-      name: fields[0] as String,
-      food: (fields[1] as List).cast<Food>(),
+    return Lunch(
+      foodName: fields[0] as String,
+      protein: fields[1] as int,
+      calorie: fields[2] as int,
+      servings: fields[3] as int,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Meals obj) {
+  void write(BinaryWriter writer, Lunch obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.foodName)
       ..writeByte(1)
-      ..write(obj.food);
+      ..write(obj.protein)
+      ..writeByte(2)
+      ..write(obj.calorie)
+      ..writeByte(3)
+      ..write(obj.servings);
   }
 
   @override
@@ -38,7 +44,7 @@ class MealsAdapter extends TypeAdapter<Meals> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MealsAdapter &&
+      other is LunchAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:workout_tracker/screens/settings_screen_pages/profile_page.dart';
 
 class EditAlertBox extends StatefulWidget {
-  bool enableEditing;
+  final bool enableEditing;
 
   EditAlertBox({
     super.key,
