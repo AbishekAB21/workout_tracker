@@ -36,10 +36,7 @@ class LoginScreen extends StatelessWidget {
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
 
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomeScreenMachTwo()));
+      ;
     } else if (usernameController.text == "User" &&
         passwordController.text == "UserPass") {
       // bool AdminLoggedin = ifAdmin();
@@ -47,10 +44,7 @@ class LoginScreen extends StatelessWidget {
       var sharedpref = await SharedPreferences.getInstance();
       sharedpref.setBool(SplashScreenState.keylogin, true);
 
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomeScreenMachTwo()));
+      
     } else if (usernameController.text.isEmpty &&
         passwordController.text.isEmpty) {
       // Show Snackbar

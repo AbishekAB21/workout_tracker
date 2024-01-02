@@ -4,9 +4,9 @@ import 'package:workout_tracker/datetime/date_time.dart';
 import 'package:workout_tracker/models/exercise.dart';
 import 'package:workout_tracker/models/workouts.dart';
 
+
 class WorkoutData extends ChangeNotifier {
   final db = HiveDatabase();
-
 
   /* 
   
@@ -188,4 +188,6 @@ class WorkoutData extends ChangeNotifier {
       heatmapset.addEntries(percentForEachDay.entries);
     }
   }
+
+  
 }

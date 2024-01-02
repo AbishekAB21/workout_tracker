@@ -250,7 +250,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreenMachTwo(),
+                            builder: (context) => HomeScreenMachTwo(userName: userprofile.displayName,),
                           ));
                     }
                   },

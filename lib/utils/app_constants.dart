@@ -9,7 +9,7 @@ enum GoalEnum {weightgain, weightloss}
 
 class HiveKeys {
   static const String boxProfile = "profile_box";
-  static const String boxBreakfast = "breakfast_box";
-  static const String boxLunch = "Lunch_box";
-  static const String boxDinner = "Dinner_box";
+  // static const String boxBreakfast = "breakfast_box";
+  // static const String boxLunch = "Lunch_box";
+  // static const String boxDinner = "Dinner_box";
 }

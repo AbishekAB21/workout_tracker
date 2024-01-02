@@ -5,13 +5,13 @@ part 'breakfast.g.dart';
 @HiveType(typeId: 2)
 class Breakfast {
   @HiveField(0)
-  final String foodName;
+  late String foodName;
   @HiveField(1)
-  final int protein;
+  late int protein;
   @HiveField(2)
-  final int calorie;
+  late int calorie;
   @HiveField(3)
-  final int servings;
+  late int servings;
 
   Breakfast(
       {required this.foodName,

@@ -4,12 +4,14 @@ import 'package:workout_tracker/homeScreen_widgets/water_tracker.dart';
 import 'package:workout_tracker/homeScreen_widgets/workout_diet.dart';
 import 'package:workout_tracker/screens/settings_screen.dart';
 import 'package:workout_tracker/components/curved_nav_bar.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
-// URL Launcher
 
 class HomeScreenMachTwo extends StatefulWidget {
+  String? userName;
   HomeScreenMachTwo({
     super.key,
+    this.userName
   });
 
   @override
@@ -39,26 +41,15 @@ class _HomeScreenMachTwoState extends State<HomeScreenMachTwo> {
                       width: 10,
                     ),
                     Text(
-                      "Welcome !",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      "Welcome, ",
+                      style: apptheme.titleText
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 4,
                     ),
-                    Visibility(
-                      visible: false,
-                      child: Text(
-                        "Admin",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),
-                      ),
+                    Text(
+                      widget.userName.toString(),
+                      style: apptheme.titleText
                     )
                   ],
                 ),
