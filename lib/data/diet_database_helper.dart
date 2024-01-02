@@ -45,7 +45,7 @@ class LunchDatabseHelper{
 // ------------------- Dinner -------------------
 
 class DinnerDatabseHelper{
-  static const String dinnerbox = "dinnerbox";
+  static const String dinnerbox = 'dinnerbox';
 
   static Future<void> addDinnerFood(Dinner dinnerFood) async{
    

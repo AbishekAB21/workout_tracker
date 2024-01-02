@@ -17,6 +17,7 @@ void main() async{
 
     await Hive.openBox<Breakfast>('breakfastBox');
     await Hive.openBox<Lunch>('lunchBox');
+    await Hive.openBox<Dinner>('dinnerbox');
 
      Hive.registerAdapter(BreakfastAdapter());
      Hive.registerAdapter(LunchAdapter());
