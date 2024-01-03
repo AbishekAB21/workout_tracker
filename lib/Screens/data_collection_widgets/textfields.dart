@@ -13,6 +13,7 @@ class Textfields extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextField(
         controller: controller,
+        style: apptheme.inputText,
         enabled: enableEditing,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
