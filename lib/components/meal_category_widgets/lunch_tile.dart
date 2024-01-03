@@ -16,6 +16,25 @@ class _LunchTileState extends State<LunchTile> {
   final TextEditingController calorieController = TextEditingController();
   final TextEditingController servingsController = TextEditingController();
 
+  final TextEditingController newFoodNameController = TextEditingController();
+  final TextEditingController newProteinController = TextEditingController();
+  final TextEditingController newCalorieController = TextEditingController();
+  final TextEditingController newServingsController = TextEditingController();
+
+  @override
+  void dispose() {
+
+    lunchController.dispose();
+    proteinController.dispose();
+    calorieController.dispose();
+    servingsController.dispose();
+    newFoodNameController.dispose();
+    newProteinController.dispose();
+    newCalorieController.dispose();
+    newServingsController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,11 +169,149 @@ class _LunchTileState extends State<LunchTile> {
               Icons.fastfood_rounded,
               color: apptheme.foregroundColor,
             ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: apptheme.primaryColor,
+                          title: Text(
+                            "Delete food item ?",
+                            style: apptheme.titleText,
+                          ),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    LunchDatabseHelper.DeleteLunchItems(index);
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Yes",
+                                  style: apptheme.buttonTextColor,
+                                )),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: apptheme.buttonTextColor,
+                                ))
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.delete_rounded,
+                      color: apptheme.foregroundColor,
+                    )),
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: apptheme.primaryColor,
+                          title: Text(
+                            "Edit existing food details ?",
+                            style: apptheme.titleText,
+                          ),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              MealsTextFields(
+                                  Controller: newFoodNameController,
+                                  hinttext: "What did you have for lunch ?",
+                                  label: "What did you have for lunch ?"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              MealsTextFields(
+                                  Controller: newProteinController,
+                                  hinttext: "Enter protein content",
+                                  label: "Enter protein content"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              MealsTextFields(
+                                  Controller: newCalorieController,
+                                  hinttext: "Enter calorie content",
+                                  label: "Enter calorie content"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              MealsTextFields(
+                                  Controller: newServingsController,
+                                  hinttext: "Enter number of servings",
+                                  label: "Enter number of servings"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  final lunchFood = Lunch(
+                                      foodName: newFoodNameController.text,
+                                      protein: int.tryParse(
+                                              newProteinController.text) ??
+                                          0,
+                                      calorie: int.tryParse(
+                                              newCalorieController.text) ??
+                                          0,
+                                      servings: int.tryParse(
+                                              newServingsController.text) ??
+                                          0);
+                                  setState(() {
+                                    LunchDatabseHelper.UpdateLunchItems(
+                                        index, lunchFood);
+                                  });
+                                  clearCntrl();
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Update",
+                                  style: apptheme.buttonTextColor,
+                                )),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: apptheme.buttonTextColor,
+                                ))
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.edit_rounded,
+                      color: apptheme.foregroundColor,
+                    ))
+              ],
+            ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(
               height: 10,
             ),
         itemCount: lunchFoodList.length);
+  }
+
+  void clearCntrl() {
+    lunchController.clear();
+    proteinController.clear();
+    calorieController.clear();
+    servingsController.clear();
+    newFoodNameController.clear();
+    newProteinController.clear();
+    newCalorieController.clear();
+    newServingsController.clear();
   }
 }

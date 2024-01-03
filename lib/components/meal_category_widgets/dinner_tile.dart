@@ -16,6 +16,25 @@ class _DinnerTileState extends State<DinnerTile> {
   final TextEditingController calorieController = TextEditingController();
   final TextEditingController servingsController = TextEditingController();
 
+  final TextEditingController newFoodNameController = TextEditingController();
+  final TextEditingController NewProteinController = TextEditingController();
+  final TextEditingController NewCalorieController = TextEditingController();
+  final TextEditingController NewServingsController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    dinnerController.dispose();
+    proteinController.dispose();
+    calorieController.dispose();
+    servingsController.dispose();
+    newFoodNameController.dispose();
+    NewProteinController.dispose();
+    NewCalorieController.dispose();
+    NewServingsController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +102,7 @@ class _DinnerTileState extends State<DinnerTile> {
                         setState(() {
                           // Trigger a rebuild
                         });
+                        clearCntrl();
                         Navigator.pop(context);
                       },
                       child: Text(
@@ -145,12 +165,151 @@ class _DinnerTileState extends State<DinnerTile> {
                 ),
               ],
             ),
-            trailing: Icon(Icons.fastfood_rounded),
+            leading: Icon(
+              Icons.fastfood_rounded,
+              color: apptheme.foregroundColor,
+            ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: apptheme.primaryColor,
+                          title: Text(
+                            "Delete food item ?",
+                            style: apptheme.titleText,
+                          ),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    DinnerDatabseHelper.DeleteDinnerItems(
+                                        index);
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Yes",
+                                  style: apptheme.buttonTextColor,
+                                )),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: apptheme.buttonTextColor,
+                                ))
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.delete_rounded,
+                      color: apptheme.foregroundColor,
+                    )),
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: apptheme.primaryColor,
+                          title: Text("Edit existing food details ?", style: apptheme.titleText,),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              MealsTextFields(
+                                  Controller: newFoodNameController,
+                                  hinttext: "What did you have for dinner ?",
+                                  label: "What did you have for dinner ?"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              MealsTextFields(
+                                  Controller: NewProteinController,
+                                  hinttext: "Enter protein content",
+                                  label: "Enter protein content"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              MealsTextFields(
+                                  Controller: NewCalorieController,
+                                  hinttext: "Enter calorie content",
+                                  label: "Enter calorie content"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              MealsTextFields(
+                                  Controller: NewServingsController,
+                                  hinttext: "Enter number of servings",
+                                  label: "Enter number of servings"),
+                              SizedBox(
+                                height: 6,
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  final dinnerFood = Dinner(
+                                      foodName: newFoodNameController.text,
+                                      protein: int.tryParse(
+                                              NewProteinController.text) ??
+                                          0,
+                                      calorie: int.tryParse(
+                                              NewCalorieController.text) ??
+                                          0,
+                                      servings: int.tryParse(
+                                              NewServingsController.text) ??
+                                          0);
+                                  setState(() {
+                                    DinnerDatabseHelper.UpdateDinnerItems(
+                                        index, dinnerFood);
+                                  });
+                                  clearCntrl();
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Update",
+                                  style: apptheme.buttonTextColor,
+                                )),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: apptheme.buttonTextColor,
+                                ))
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.edit_rounded,
+                      color: apptheme.foregroundColor,
+                    ))
+              ],
+            ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(
               height: 6,
             ),
         itemCount: dinnerFoodList.length);
+  }
+  
+  void clearCntrl() {
+    dinnerController.clear();
+    proteinController.clear();
+    calorieController.clear();
+    servingsController.clear();
+    newFoodNameController.clear();
+    NewProteinController.clear();
+    NewCalorieController.clear();
+    NewServingsController.clear();
   }
 }
