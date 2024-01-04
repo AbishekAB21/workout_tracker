@@ -7,6 +7,7 @@ import 'package:workout_tracker/components/curved_nav_bar.dart';
 import 'package:workout_tracker/utils/app_theme.dart';
 
 
+// ignore: must_be_immutable
 class HomeScreenMachTwo extends StatefulWidget {
   String? userName;
   HomeScreenMachTwo({

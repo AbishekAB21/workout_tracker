@@ -23,7 +23,6 @@ class _DinnerTileState extends State<DinnerTile> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     dinnerController.dispose();
     proteinController.dispose();
     calorieController.dispose();

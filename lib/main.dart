@@ -3,10 +3,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:workout_tracker/models/breakfast.dart';
 import 'package:workout_tracker/models/dinner.dart';
-import 'package:workout_tracker/models/exercise_model.dart';
+import 'package:workout_tracker/models/exercise.dart';
 import 'package:workout_tracker/models/lunch.dart';
-import 'package:workout_tracker/models/muscle.dart';
 import 'package:workout_tracker/models/profile_model.dart';
+import 'package:workout_tracker/models/workouts.dart';
 import 'package:workout_tracker/screens/splash_screen.dart';
 import 'package:workout_tracker/data/workout_data.dart';
 
@@ -25,8 +25,8 @@ void main() async{
      Hive.registerAdapter(BreakfastAdapter());
      Hive.registerAdapter(LunchAdapter());
      Hive.registerAdapter(DinnerAdapter());
-     Hive.registerAdapter(MuscleAdapter());
-     Hive.registerAdapter(ExercisesAdapter());
+     Hive.registerAdapter(WorkoutAdapter());
+     Hive.registerAdapter(ExerciseAdapter());
     
      
 

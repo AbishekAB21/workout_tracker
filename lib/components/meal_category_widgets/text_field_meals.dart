@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/utils/app_theme.dart';
 
+// ignore: must_be_immutable
 class MealsTextFields extends StatefulWidget {
   TextEditingController Controller = TextEditingController();
   String hinttext;

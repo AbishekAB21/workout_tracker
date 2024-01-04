@@ -1,32 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'muscle.dart';
+part of 'workouts.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class MuscleAdapter extends TypeAdapter<Muscle> {
+class WorkoutAdapter extends TypeAdapter<Workout> {
   @override
-  final int typeId = 5;
+  final int typeId = 7;
 
   @override
-  Muscle read(BinaryReader reader) {
+  Workout read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Muscle(
-      muscleName: fields[0] as String,
+    return Workout(
+      name: fields[0] as String,
+      exercises: (fields[1] as List).cast<Exercise>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Muscle obj) {
+  void write(BinaryWriter writer, Workout obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.muscleName);
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.exercises);
   }
 
   @override
@@ -35,7 +38,7 @@ class MuscleAdapter extends TypeAdapter<Muscle> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MuscleAdapter &&
+      other is WorkoutAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

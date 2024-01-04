@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workout_tracker/screens/new_homescreen.dart';
 import 'package:workout_tracker/screens/splash_screen.dart';
 import 'package:workout_tracker/components/login_textfields.dart';
 import 'package:workout_tracker/components/sign_in_button.dart';

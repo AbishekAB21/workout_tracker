@@ -19,14 +19,15 @@ class WorkoutData extends ChangeNotifier {
 
   // Here we call the Workout class inside the list
   List<Workout> workoutList = [
-    Workout(name: "Upper Body", exercises: [
-      // Here we can add lists of Exercises for a specific Workout Plan
-      Exercise(name: "Biceps", weight: "7.5", reps: "15", sets: "3"),
-    ]),
-    Workout(name: "Lower Body", exercises: [
-      // Here we can add lists of Exercises for a specific Workout Plan
-      Exercise(name: "Calves", weight: "20", reps: "15", sets: "3"),
-    ])
+    Workout(name: "Wings", exercises: []),
+    Workout(name: "Biceps", exercises: []),
+    Workout(name: "Triceps", exercises: []),
+    Workout(name: "Chest", exercises: []),
+    Workout(name: "Shoulders", exercises: []),
+    Workout(name: "Legs", exercises: []),
+    Workout(name: "Forearms", exercises: []),
+    Workout(name: "Abs", exercises: []),
+    Workout(name: "Cardio", exercises: []),
   ];
 
   // if there are workouts already in the database, then get that workout list.
