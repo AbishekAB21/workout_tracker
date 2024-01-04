@@ -197,7 +197,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 60,
+                  height: 80,
                 ),
 
                 GetStartedButton(
