@@ -60,7 +60,7 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    color: apptheme.secondaryColor,
+                    color: apptheme.primaryColor,
                     borderRadius: BorderRadius.circular(5)),
                 height: 100,
                 width: 100,
@@ -100,7 +100,7 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
               child: Container(
                 margin: EdgeInsets.only(left: 50),
                 decoration: BoxDecoration(
-                    color: apptheme.secondaryColor,
+                    color: apptheme.primaryColor,
                     borderRadius: BorderRadius.circular(5)),
                 height: 100,
                 width: 100,

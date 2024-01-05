@@ -11,6 +11,9 @@ class WaterTracker extends StatefulWidget {
   State<WaterTracker> createState() => _WaterTrackerState();
 }
 
+
+class _WaterTrackerState extends State<WaterTracker> {
+
 // Water percentage
 double waterPercent = 0;
 
@@ -36,7 +39,6 @@ void DecreaseWaterPercent() {
   print("$waterPercent");
 }
 
-class _WaterTrackerState extends State<WaterTracker> {
   // Hive
   late Box<Water> waterBox;
 
@@ -84,7 +86,7 @@ class _WaterTrackerState extends State<WaterTracker> {
                 radius: 100,
                 lineWidth: 15,
                 progressColor: apptheme.waterColor,
-                backgroundColor: apptheme.secondaryColor,
+                backgroundColor: apptheme.disabledColor,
                 percent: waterPercent,
                 circularStrokeCap: CircularStrokeCap.round,
                 center: Column(

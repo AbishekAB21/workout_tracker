@@ -40,7 +40,7 @@ class AppDefaultTheme extends AppTheme {
   AppDefaultTheme()
       : super(
           primaryColor: Colors.grey.shade400,
-          secondaryColor: Colors.green.shade600,
+          secondaryColor: Colors.blue.shade700,
           borderColor: Colors.grey,
           foregroundColor: Colors.black,
           disabledColor: Colors.grey,
@@ -54,6 +54,6 @@ class AppDefaultTheme extends AppTheme {
           waterColor: Colors.blue.shade600,
           listText: TextStyle(
               color: Colors.grey.shade300, fontSize: 16, fontWeight: FontWeight.w600),
-          selectedColor: Colors.green.shade600,
+          selectedColor: Colors.blue.shade700,
         );
 }
