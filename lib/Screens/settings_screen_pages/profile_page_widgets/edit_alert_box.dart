@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker/screens/settings_screen_pages/profile_page.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class EditAlertBox extends StatefulWidget {
   final bool enableEditing;
@@ -20,20 +21,20 @@ class _EditAlertBoxState extends State<EditAlertBox> {
       backgroundColor: Colors.deepPurple,
       content: Text(
         "Are you sure you want to edit ?",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        style: apptheme.labelText,
       ),
       title: Text(
         "Enabling Editing",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style: apptheme.titleText,
       ),
       actions: [
         TextButton(
             onPressed: () {
-              setState(() {
-                enableEditing = true;
-              });
-
+              enableEditing = true;
               Navigator.pop(context);
+              setState(() {
+                // trigger a rebuild
+              });
             },
             child: Text(
               "Yes",

@@ -4,7 +4,6 @@ import 'package:workout_tracker/Screens/data_collection_widgets/textfields.dart'
 import 'package:workout_tracker/models/profile_model.dart';
 import 'package:workout_tracker/screens/settings_screen_pages/profile_page_widgets/edit_alert_box.dart';
 import 'package:workout_tracker/screens/settings_screen_pages/profile_page_widgets/header_icon_text.dart';
-import 'package:workout_tracker/screens/settings_screen_pages/profile_page_widgets/save_changes_button.dart';
 import 'package:workout_tracker/utils/app_constants.dart';
 import 'package:workout_tracker/utils/app_theme.dart';
 
@@ -214,7 +213,44 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
 
                       Visibility(
-                          visible: enableEditing, child: SaveChangesButton()),
+                          visible: enableEditing,
+                          child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      apptheme.secondaryColor),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(7)))),
+                              onPressed: () {
+                                ProfileModel newUserprofile = ProfileModel(
+                                    displayName: displaynameController.text,
+                                    age: int.tryParse(ageController.text) ?? 0,
+                                    weight: double.tryParse(
+                                            weightController.text) ??
+                                        0,
+                                    height: double.tryParse(
+                                            heightController.text) ??
+                                        0,
+                                    gender: _genderEnum.toString(),
+                                    goal: _goalEnum.toString(),
+                                    enrollDatetime:
+                                        DateTime.now().millisecondsSinceEpoch);
+
+                                profiles.put(
+                                    newUserprofile.displayName, newUserprofile);
+                                clearcntrls();
+                                enableEditing = false;
+                                setState(() {
+                                  // Trigger a rebuild
+                                });
+                              },
+                              child: Text(
+                                "Save Changes",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              ))),
 
                       SizedBox(
                         height: 40,
@@ -242,5 +278,12 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       _goalEnum = goal;
     });
+  }
+  
+  void clearcntrls() {
+    displaynameController.clear();
+    ageController.clear();
+    weightController.clear();
+    heightController.clear();
   }
 }
