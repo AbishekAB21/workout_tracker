@@ -6,6 +6,7 @@ import 'package:workout_tracker/models/dinner.dart';
 import 'package:workout_tracker/models/exercise.dart';
 import 'package:workout_tracker/models/lunch.dart';
 import 'package:workout_tracker/models/profile_model.dart';
+import 'package:workout_tracker/models/water.dart';
 import 'package:workout_tracker/models/workouts.dart';
 import 'package:workout_tracker/screens/splash_screen.dart';
 import 'package:workout_tracker/data/workout_data.dart';
@@ -20,6 +21,7 @@ void main() async{
     await Hive.openBox<Breakfast>('breakfastBox');
     await Hive.openBox<Lunch>('lunchBox');
     await Hive.openBox<Dinner>('dinnerbox');
+    await Hive.openBox<Water>('waterbox');
      
      Hive.registerAdapter(ProfileModelAdapter());
      Hive.registerAdapter(BreakfastAdapter());
@@ -27,6 +29,7 @@ void main() async{
      Hive.registerAdapter(DinnerAdapter());
      Hive.registerAdapter(WorkoutAdapter());
      Hive.registerAdapter(ExerciseAdapter());
+     Hive.registerAdapter(WaterAdapter());
     
      
 

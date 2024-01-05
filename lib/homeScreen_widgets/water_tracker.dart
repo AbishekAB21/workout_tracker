@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:workout_tracker/models/water.dart';
 
 class WaterTracker extends StatefulWidget {
   const WaterTracker({super.key});
@@ -34,6 +36,16 @@ void DecreaseWaterPercent() {
 }
 
 class _WaterTrackerState extends State<WaterTracker> {
+
+  // Hive 
+  late Box<Water> waterBox;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    waterBox = Hive.box<Water>('waterbox');
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -96,6 +108,7 @@ class _WaterTrackerState extends State<WaterTracker> {
                               setState(() {
                                 IncreasewaterPercentage();
                               });
+                              _updateHive();
                             },
                             icon: Icon(
                               Icons.add,
@@ -112,6 +125,7 @@ class _WaterTrackerState extends State<WaterTracker> {
                               setState(() {
                                 DecreaseWaterPercent();
                               });
+                              _updateHive();
                             },
                             icon: Icon(
                               Icons.remove,
@@ -132,5 +146,9 @@ class _WaterTrackerState extends State<WaterTracker> {
         )
       ],
     );
+  }
+  
+  void _updateHive() {
+    waterBox.put('waterkey', Water(waterPercent: waterPercent));
   }
 }
