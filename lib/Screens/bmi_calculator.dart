@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class BMICalculator extends StatefulWidget {
   BMICalculator({super.key});
@@ -12,7 +13,7 @@ class _BMICalculatorState extends State<BMICalculator> {
   bool isVisible = false;
 
 // BMI Value
-  double? BMI;
+  String? BMI;
   String WeightStatus = " ";
 
 // text editing controllers
@@ -58,12 +59,12 @@ class _BMICalculatorState extends State<BMICalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: apptheme.primaryColor,
       appBar: AppBar(
         toolbarHeight: 30,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: apptheme.foregroundColor),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -76,30 +77,29 @@ class _BMICalculatorState extends State<BMICalculator> {
                       SizedBox(
                         height: 5,
                       ),
-                      Icon(
-                        Icons.calculate_rounded,
-                        size: 50,
-                        color: Colors.white,
+                      // Icon(
+                      //   Icons.calculate_rounded,
+                      //   size: 50,
+                      //   color: Colors.white,
+                      // ),
+                      Container(
+                        height: 60,
+                        width: 60,
+                        child: Image.asset("assets/BMI.png"),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         "Calculate your BMI (Body Mass Index)",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: apptheme.titleText
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         "This will help you in configuring the perfect workout plan.",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                        style: apptheme.labelText
                       )
                     ],
                   ),
@@ -112,19 +112,20 @@ class _BMICalculatorState extends State<BMICalculator> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
                   controller: heightController,
-                  style: TextStyle(color: Colors.white),
+                  style: apptheme.inputText,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: BorderSide(color: Colors.white54)),
+                        borderSide: BorderSide(color: apptheme.borderColor)),
                     filled: true,
-                    fillColor: Colors.deepPurpleAccent.shade200,
+                    fillColor: apptheme.primaryColor,
                     hintText: "Enter your height (In cms)",
-                    hintStyle: TextStyle(color: Colors.white70),
+                    hintStyle: apptheme.hintText,
+                    label: Text("Height", style: apptheme.labelText,),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                            color: Colors.deepPurpleAccent.shade200)),
+                            color: apptheme.borderColor)),
                   ),
                 ),
               ),
@@ -135,53 +136,61 @@ class _BMICalculatorState extends State<BMICalculator> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
                   controller: weightController,
-                  style: TextStyle(color: Colors.white),
+                  style: apptheme.inputText,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(color: Colors.white54)),
+                          borderSide: BorderSide(color: apptheme.borderColor)),
                       filled: true,
-                      fillColor: Colors.deepPurpleAccent.shade200,
+                      fillColor: apptheme.primaryColor,
+                      label: Text("Weight", style: apptheme.labelText,),
                       hintText: "Enter your Weight (In kgs)",
-                      hintStyle: TextStyle(color: Colors.white70),
+                      hintStyle: apptheme.hintText,
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                           borderSide: BorderSide(
-                              color: Colors.deepPurpleAccent.shade200))),
+                              color: apptheme.borderColor))),
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
-              ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                      backgroundColor: MaterialStateProperty.all(
-                          Colors.deepPurpleAccent.shade200)),
-                  onPressed: () {
-                    checkCntrls();
-
-                    String height = heightController.text;
-                    String Weight = weightController.text;
-
-                    double heightValue = double.parse(height);
-                    double weightValue = double.parse(Weight);
-
-                    setState(() {
-                      BMI = calculateBMI(heightValue, weightValue);
-                    });
-
-                    heightController.clear();
-                    weightController.clear();
-
-                    isVisible = true;
-                  },
-                  child: Text(
-                    "Calculate BMI",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
-                  )),
+              Container(
+                height: 50,
+                width: 150,
+                decoration: BoxDecoration(
+                  color: apptheme.secondaryColor,
+                  borderRadius: BorderRadius.circular(5)
+                ),
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                        backgroundColor: MaterialStateProperty.all(
+                            apptheme.secondaryColor)),
+                    onPressed: () {
+                      checkCntrls();
+                
+                      String height = heightController.text;
+                      String Weight = weightController.text;
+                
+                      double heightValue = double.parse(height);
+                      double weightValue = double.parse(Weight);
+                
+                      setState(() {
+                        BMI = calculateBMI(heightValue, weightValue).toStringAsFixed(2);
+                      });
+                
+                      heightController.clear();
+                      weightController.clear();
+                
+                      isVisible = true;
+                    },
+                    child: Text(
+                      "Calculate BMI",
+                      style: apptheme.titleText
+                    )),
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -189,21 +198,18 @@ class _BMICalculatorState extends State<BMICalculator> {
                   visible: isVisible,
                   child: Text(
                     "BMI = $BMI",
-                    style: TextStyle(color: Colors.white),
+                    style: apptheme.labelText,
                   )),
               SizedBox(
                 height: 10,
               ),
               Text(
                 "$WeightStatus",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                style: apptheme.titleText
               ),
               SizedBox(height: 10),
               Card(
-                color: Colors.deepPurpleAccent.shade200,
+                color: apptheme.secondaryColor,
                 elevation: 2,
                 child: Container(
                   padding: EdgeInsets.all(20),

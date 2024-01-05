@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class CalorieCalculator extends StatefulWidget {
   const CalorieCalculator({super.key});
@@ -19,7 +20,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
   final ageController = TextEditingController();
 
 // Required Calorie variable
-  double? ReqCalories;
+  String? ReqCalories;
 
 // Calorie calc function
   double caloriecalc(double weight, double height, double age, String gender) {
@@ -59,19 +60,24 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Colors.deepPurple,
+          iconTheme: IconThemeData(color:apptheme.foregroundColor),
+          backgroundColor: apptheme.primaryColor,
           elevation: 0,
         ),
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Icon(
-              Icons.calculate_rounded,
-              size: 50,
-              color: Colors.white,
+            // Icon(
+            //   Icons.calculate_rounded,
+            //   size: 50,
+            //   color: Colors.white,
+            // ),
+            Container(
+              height: 60,
+              width: 60,
+              child: Image.asset("assets/calories.png"),
             ),
             SizedBox(
               height: 10,
@@ -81,10 +87,7 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               children: [
                 Text(
                   "Calorie Calculator",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                  style: apptheme.titleText
                 ),
               ],
             ),
@@ -93,20 +96,14 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
             ),
             Text(
               "Find out the exact amount of calories you need.",
-              style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400),
+              style: apptheme.labelText
             ),
             SizedBox(
               height: 10,
             ),
             Text(
               "Take control of your daily calorie intake.",
-              style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400),
+              style: apptheme.labelText
             ),
             SizedBox(
               height: 20,
@@ -117,17 +114,17 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 controller: weightController,
-                style: TextStyle(color: Colors.white),
+                style: apptheme.inputText,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: "Enter your current weight (in kgs)",
-                     hintStyle: TextStyle(color: Colors.white70),
-                    fillColor: Colors.deepPurpleAccent.shade200,
+                     hintStyle: apptheme.hintText,
+                    fillColor: apptheme.primaryColor,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
+                        borderSide: BorderSide(color: apptheme.borderColor)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white70))),
+                        borderSide: BorderSide(color: apptheme.borderColor))),
               ),
             ),
             SizedBox(
@@ -138,17 +135,17 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 controller: heightController,
-                style: TextStyle(color: Colors.white),
+                style: apptheme.inputText,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: "Enter your current height (in cms)",
-                     hintStyle: TextStyle(color: Colors.white70),
-                    fillColor: Colors.deepPurpleAccent.shade200,
+                     hintStyle: apptheme.hintText,
+                    fillColor: apptheme.primaryColor,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
+                        borderSide: BorderSide(color: apptheme.borderColor)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white70))),
+                        borderSide: BorderSide(color: apptheme.borderColor))),
               ),
             ),
             SizedBox(
@@ -159,17 +156,17 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 controller: ageController,
-                style: TextStyle(color: Colors.white),
+                style: apptheme.inputText,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: "Enter your current age",
-                     hintStyle: TextStyle(color: Colors.white70),
-                    fillColor: Colors.deepPurpleAccent.shade200,
+                     hintStyle: apptheme.hintText,
+                    fillColor: apptheme.primaryColor,
                     filled: true,
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
+                        borderSide: BorderSide(color: apptheme.borderColor)),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white70))),
+                        borderSide: BorderSide(color: apptheme.borderColor))),
               ),
             ),
             SizedBox(
@@ -181,12 +178,12 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
               child: Column(
                 children: [
                   RadioListTile(
-                    title: const Text(
+                    title:  Text(
                       "Male",
-                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white70),
+                      style: apptheme.titleText,
                     ),
                     value: genders[0],
-                    fillColor: MaterialStateProperty.all(Colors.white),
+                    fillColor: MaterialStateProperty.all(apptheme.secondaryColor),
                     groupValue: selectedGender,
                     onChanged: (value) {
                       setState(() {
@@ -195,12 +192,12 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                     },
                   ),
                   RadioListTile(
-                    title: const Text(
+                    title:  Text(
                       "Female",
-                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white70),
+                      style: apptheme.titleText,
                     ),
                     value: genders[1],
-                    fillColor: MaterialStateProperty.all(Colors.white),
+                    fillColor: MaterialStateProperty.all(apptheme.secondaryColor),
                     groupValue: selectedGender,
                     onChanged: (value) {
                       setState(() {
@@ -214,37 +211,45 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                    padding: MaterialStateProperty.all(EdgeInsets.all(15)),
-                    backgroundColor: MaterialStateProperty.all(Colors.deepPurpleAccent.shade200)),
-                onPressed: () {
-                  checkControllers();
-                  
-                  String weightString = weightController.text;
-                  String heightString = heightController.text;
-                  String ageString = ageController.text;
-
-                  double weight = double.parse(weightString);
-                  double height = double.parse(heightString);
-                  double age = double.parse(ageString);
-                  String gender = selectedGender;
-                  setState(() {
-                    ReqCalories = caloriecalc(weight, height, age, gender);
-                  });
-
-                  isVisible = true;
-
-                  weightController.clear();
-                  heightController.clear();
-                  ageController.clear();
-                },
-                child: Text(
-                  "Get Calorie requirement",
-                  style: TextStyle(fontSize: 15, color: Colors.white),
-                )),
+            Container(
+              height: 50,
+              width: 220,
+              decoration: BoxDecoration(
+                color: apptheme.secondaryColor,
+                borderRadius: BorderRadius.circular(5)
+              ),
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(15)),
+                      backgroundColor: MaterialStateProperty.all(apptheme.secondaryColor)),
+                  onPressed: () {
+                    checkControllers();
+                    
+                    String weightString = weightController.text;
+                    String heightString = heightController.text;
+                    String ageString = ageController.text;
+              
+                    double weight = double.parse(weightString);
+                    double height = double.parse(heightString);
+                    double age = double.parse(ageString);
+                    String gender = selectedGender;
+                    setState(() {
+                      ReqCalories = caloriecalc(weight, height, age, gender).toStringAsFixed(2);
+                    });
+              
+                    isVisible = true;
+              
+                    weightController.clear();
+                    heightController.clear();
+                    ageController.clear();
+                  },
+                  child: Text(
+                    "Get Calorie requirement",
+                    style: apptheme.titleText,
+                  )),
+            ),
             SizedBox(
               height: 20,
             ),
@@ -254,11 +259,12 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
                 children: [
                   Text(
                     "Required Calories per day (in gms) : $ReqCalories\gms",
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                    style: apptheme.titleText,
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 10,),
-                  Text("Our diet plans offer advices that can help you ", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white70),),
-                Text("achieve these requirements.", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white70),)
+                  Text("Our diet plans offer advices that can help you ", style: apptheme.labelText,),
+                Text("achieve these requirements.", style: apptheme.labelText,)
                 ],
               ),
             )

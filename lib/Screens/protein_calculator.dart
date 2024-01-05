@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class ProteinCalculator extends StatefulWidget {
   const ProteinCalculator({super.key});
@@ -8,9 +9,8 @@ class ProteinCalculator extends StatefulWidget {
 }
 
 class _ProteinCalculatorState extends State<ProteinCalculator> {
-
 // Bool
- bool isVisible = false;
+  bool isVisible = false;
 // Text editing controllers
   final weightController = TextEditingController();
 
@@ -25,9 +25,9 @@ class _ProteinCalculatorState extends State<ProteinCalculator> {
   }
 
 // SnackBar
- void checkCntrls(){
-   if(weightController.text.isEmpty){
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  void checkCntrls() {
+    if (weightController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Please enter current weight"),
         backgroundColor: Colors.red,
         closeIconColor: Colors.white,
@@ -38,23 +38,28 @@ class _ProteinCalculatorState extends State<ProteinCalculator> {
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.all(10),
       ));
-   }
- }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Colors.deepPurple,
+          iconTheme: IconThemeData(color: apptheme.foregroundColor),
+          backgroundColor: apptheme.primaryColor,
           elevation: 0,
         ),
         body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Icon(
-            Icons.calculate_rounded,
-            size: 50,
-            color: Colors.white,
+          // Icon(
+          //   Icons.calculate_rounded,
+          //   size: 50,
+          //   color: Colors.white,
+          // ),
+          Container(
+            height: 60,
+            width: 60,
+            child: Image.asset("assets/protein.png"),
           ),
           SizedBox(
             height: 10,
@@ -62,35 +67,21 @@ class _ProteinCalculatorState extends State<ProteinCalculator> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Protein Calculator",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
+              Text("Protein Calculator", style: apptheme.titleText),
             ],
           ),
           SizedBox(
             height: 10,
           ),
-          Text(
-            "Find out the exact amount of protien you need.",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w400),
-          ),
+          Text("Find out the exact amount of protien you need.",
+              style: apptheme.labelText),
           SizedBox(
-            height: 10,
+            height: 6,
           ),
-          Text(
-            "Consuming the required amount of protein is really important. ",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-                fontWeight: FontWeight.w400),
-          ),
+          Text("Consuming the required amount of protein is really important. ",
+              style: apptheme.labelText,
+              textAlign: TextAlign.center,
+              ),
           SizedBox(
             height: 20,
           ),
@@ -100,45 +91,54 @@ class _ProteinCalculatorState extends State<ProteinCalculator> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
               controller: weightController,
+              style: apptheme.inputText,
               keyboardType: TextInputType.number,
-              // controller: currentWeightController,
               decoration: InputDecoration(
                   hintText: "Enter your current weight (in kgs)",
-                  hintStyle: TextStyle(color: Colors.white70),
-                  fillColor: Colors.deepPurpleAccent.shade200,
+                  hintStyle: apptheme.hintText,
+                  fillColor: apptheme.primaryColor,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepPurpleAccent.shade200)),
+                      borderSide: BorderSide(color: apptheme.borderColor)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white54))),
+                      borderSide: BorderSide(color: apptheme.borderColor))),
             ),
           ),
           SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                  padding: MaterialStateProperty.all(EdgeInsets.all(15)),
-                  backgroundColor: MaterialStateProperty.all(Colors.deepPurpleAccent.shade200,)),
-              onPressed: () {
-                checkCntrls();
+          Container(
+            height: 50,
+            width: 220,
+            decoration: BoxDecoration(
+                color: apptheme.secondaryColor,
+                borderRadius: BorderRadius.circular(5)),
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5))),
+                    padding: MaterialStateProperty.all(EdgeInsets.all(15)),
+                    backgroundColor: MaterialStateProperty.all(
+                      apptheme.secondaryColor,
+                    )),
+                onPressed: () {
+                  checkCntrls();
 
-                String weightString = weightController.text;
-                double weight = double.parse(weightString);
-                setState(() {
-                  ReqProtein = proteincalc(weight);
-                });
+                  String weightString = weightController.text;
+                  double weight = double.parse(weightString);
+                  setState(() {
+                    ReqProtein = proteincalc(weight);
+                  });
 
-                isVisible = true;
+                  isVisible = true;
 
-                weightController.clear();
-              },
-              child: Text(
-                "Get Protein requirement",
-                style: TextStyle(fontSize: 15, color: Colors.white),
-              )),
+                  weightController.clear();
+                },
+                child: Text(
+                  "Get Protein requirement",
+                  style: apptheme.titleText,
+                )),
+          ),
           SizedBox(
             height: 20,
           ),
@@ -148,10 +148,11 @@ class _ProteinCalculatorState extends State<ProteinCalculator> {
               children: [
                 Text(
                   "Required Protein per day (in gms) : $ReqProtein\gms",
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                ), SizedBox(height: 10,),
-                Text("Our diet plans offer advices that can help you ", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white70),),
-                Text("achieve these requirements.", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white70),)
+                  style: apptheme.titleText
+                ),
+                SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           )

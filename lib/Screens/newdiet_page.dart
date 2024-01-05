@@ -18,7 +18,7 @@ class _DietPlannerPageState extends State<DietPlannerPage> {
     return Scaffold(
       backgroundColor: apptheme.primaryColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white70),
+        iconTheme: IconThemeData(color: apptheme.foregroundColor),
         backgroundColor: apptheme.primaryColor,
         elevation: 0,
       ),
@@ -37,8 +37,10 @@ class _DietPlannerPageState extends State<DietPlannerPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("A healthy diet goes a long way in staying fit.",
-                  style: apptheme.titleText),
+              Text("Eat smart, stay fit – track your way to a healthier you!",
+                  style: apptheme.titleText,
+                  textAlign: TextAlign.center, 
+                  ),
             ],
           ),
           SizedBox(

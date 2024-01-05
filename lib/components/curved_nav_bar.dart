@@ -11,10 +11,20 @@ class CurvedNavBar extends StatefulWidget {
 
 class _CurvedNavBarState extends State<CurvedNavBar> {
 
-  final items = const [
-    Icon(Icons.home, color: Colors.white,),
-    Icon(Icons.sports_gymnastics_rounded, color: Colors.white,),
-    Icon(Icons.fastfood_rounded, color: Colors.white,)
+  final items =  [
+    // Icon(Icons.home, color: Colors.white,),
+    Container(
+      height: 35,
+      width: 35,
+      child: Image.asset("assets/home.png")),
+    Container(
+      height: 35,
+      width: 35,
+      child: Image.asset("assets/weightlifting.png")),
+    Container(
+      height: 35,
+      width: 35,
+      child: Image.asset("assets/diet.png")),
   ];
 
   int index = 0;

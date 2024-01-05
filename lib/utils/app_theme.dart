@@ -16,6 +16,7 @@ abstract class AppTheme {
   final Color SnackBarColor;
   final Color waterColor;
   final TextStyle listText;
+  final Color selectedColor;
 
   AppTheme(
       {required this.primaryColor,
@@ -30,14 +31,15 @@ abstract class AppTheme {
       required this.titleText,
       required this.SnackBarColor,
       required this.waterColor,
-      required this.listText
+      required this.listText,
+      required this.selectedColor
       });
 }
 
 class AppDefaultTheme extends AppTheme {
   AppDefaultTheme()
       : super(
-          primaryColor: Colors.grey.shade300,
+          primaryColor: Colors.grey.shade400,
           secondaryColor: Colors.green.shade600,
           borderColor: Colors.grey,
           foregroundColor: Colors.black,
@@ -52,5 +54,6 @@ class AppDefaultTheme extends AppTheme {
           waterColor: Colors.blue.shade600,
           listText: TextStyle(
               color: Colors.grey.shade300, fontSize: 16, fontWeight: FontWeight.w600),
+          selectedColor: Colors.green.shade600,
         );
 }

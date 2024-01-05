@@ -113,7 +113,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                       },
                       icon: Icon(Icons.male,
                           color: _genderEnum == GenderEnum.male
-                              ? apptheme.foregroundColor
+                              ? apptheme.selectedColor
                               : apptheme.disabledColor),
                       iconSize: 48,
                     ),
@@ -124,7 +124,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                       icon: Icon(
                         Icons.female,
                         color: _genderEnum == GenderEnum.female
-                            ? apptheme.foregroundColor
+                            ? apptheme.selectedColor
                             : apptheme.disabledColor,
                       ),
                       iconSize: 48,
@@ -136,7 +136,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                       icon: Icon(
                         Icons.transgender,
                         color: _genderEnum == GenderEnum.others
-                            ? apptheme.foregroundColor
+                            ? apptheme.selectedColor
                             : apptheme.disabledColor,
                       ),
                       iconSize: 48,
@@ -174,7 +174,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                         child: Image.asset(
                           "assets/weight_gain.png",
                           color: _goalEnum == GoalEnum.weightgain
-                              ? apptheme.foregroundColor
+                              ? apptheme.selectedColor
                               : apptheme.disabledColor,
                         ),
                       ),
@@ -189,7 +189,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                         child: Image.asset(
                           "assets/weight_loss.png",
                           color: _goalEnum == GoalEnum.weightloss
-                              ? apptheme.foregroundColor
+                              ? apptheme.selectedColor
                               : apptheme.disabledColor,
                         ),
                       ),
@@ -202,16 +202,13 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
 
                 GetStartedButton(
                   onpress: () async {
-                    
                     if (displaynameController.text.isEmpty ||
                         ageController.text.isEmpty ||
                         weightController.text.isEmpty ||
                         heightController.text.isEmpty ||
                         _genderEnum == null ||
                         _goalEnum == null) {
-
-                      ScaffoldMessenger(
-                          child: SnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(
                           "Details cannot be empty",
                           style: apptheme.buttonTextColor,
@@ -223,7 +220,6 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                         duration: Duration(seconds: 3),
                       ));
                     } else {
-
                       // Hive
                       Box<ProfileModel> profiles =
                           await Hive.openBox(HiveKeys.boxProfile);
@@ -250,7 +246,9 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreenMachTwo(userName: userprofile.displayName,),
+                            builder: (context) => HomeScreenMachTwo(
+                              userName: userprofile.displayName,
+                            ),
                           ));
                     }
                   },
