@@ -158,7 +158,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 6,
+                  height: 8,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -197,7 +197,7 @@ class _DataCollectionScreenState extends State<DataCollectionScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 80,
+                  height: 40,
                 ),
 
                 GetStartedButton(

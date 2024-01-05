@@ -15,17 +15,23 @@ class MealCategoryTile extends StatelessWidget {
       margin: EdgeInsets.only(left: 15, right: 15),
       child: ListTile(
           tileColor: apptheme.secondaryColor,
-          textColor: apptheme.foregroundColor,
-          iconColor: apptheme.foregroundColor,
+          // textColor: apptheme.listTextColor, 
+          // iconColor: apptheme.foregroundColor,
           contentPadding: EdgeInsets.all(15),
           title: Text(
             mealName,
-            style: apptheme.titleText,
+            style: apptheme.listText,
           ),
-          leading: Icon(
-            Icons.fastfood,
-            color: apptheme.foregroundColor,
-            size: 35,
+          leading: 
+          // Icon(
+          //   Icons.fastfood,
+          //   color: apptheme.foregroundColor,
+          //   size: 35,
+          // ),
+          Container(
+            height: 35,
+            width: 35,
+            child: Image.asset("assets/fooditems.png"),
           ),
           trailing: Icon(
             Icons.navigate_next_rounded,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:workout_tracker/screens/bmi_calculator.dart';
 import 'package:workout_tracker/screens/calorie_calculator.dart';
 import 'package:workout_tracker/screens/protein_calculator.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class Calculators extends StatefulWidget {
   const Calculators({super.key});
@@ -22,10 +23,7 @@ class _CalculatorsState extends State<Calculators> {
                   children: [
                     Text(
                       "Calculators",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white70),
+                      style: apptheme.titleText
                     ),
                   ],
                 ),
@@ -40,10 +38,7 @@ class _CalculatorsState extends State<Calculators> {
                   children: [
                     Text(
                       "Monitor your BMI, Protein intake & Calorie intake.",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white70),
+                      style: apptheme.labelText,
                     ),
                   ],
                 ),
@@ -60,28 +55,33 @@ class _CalculatorsState extends State<Calculators> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.deepPurpleAccent.shade200,
+                            color: apptheme.secondaryColor,
                             borderRadius: BorderRadius.circular(5)),
                         height: 100,
                         width: 100,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.calculate_rounded,
-                              size: 40,
-                              color: Colors.white70,
+                            // Icon(
+                            //   Icons.calculate_rounded,
+                            //   size: 40,
+                            //   color: Colors.white70,
+                            // ),
+                            Container(
+                              height: 60,
+                              width: 60,
+                              child: Image.asset("assets/BMI.png"),
                             ),
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              "BMI",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white70,
-                                  fontSize: 15),
-                            )
+                            // Text(
+                            //   "BMI",
+                            //   style: TextStyle(
+                            //       fontWeight: FontWeight.bold,
+                            //       color: Colors.white70,
+                            //       fontSize: 15),
+                            // )
                           ],
                         ),
                       ),
@@ -92,28 +92,33 @@ class _CalculatorsState extends State<Calculators> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.deepPurpleAccent.shade200,
+                            color: apptheme.secondaryColor,
                             borderRadius: BorderRadius.circular(5)),
                         height: 100,
                         width: 100,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.calculate_rounded,
-                              size: 40,
-                              color: Colors.white70,
+                            // Icon(
+                            //   Icons.calculate_rounded,
+                            //   size: 40,
+                            //   color: Colors.white70,
+                            // ),
+                            Container(
+                              height: 60,
+                              width: 60,
+                              child: Image.asset("assets/protein.png"),
                             ),
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              "Protein",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white70,
-                                  fontSize: 15),
-                            )
+                            // Text(
+                            //   "Protein",
+                            //   style: TextStyle(
+                            //       fontWeight: FontWeight.bold,
+                            //       color: Colors.white70,
+                            //       fontSize: 15),
+                            // )
                           ],
                         ),
                       ),
@@ -124,28 +129,33 @@ class _CalculatorsState extends State<Calculators> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.deepPurpleAccent.shade200,
+                            color: apptheme.secondaryColor,
                             borderRadius: BorderRadius.circular(5)),
                         height: 100,
                         width: 100,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.calculate_rounded,
-                              size: 40,
-                              color: Colors.white70,
+                            // Icon(
+                            //   Icons.calculate_rounded,
+                            //   size: 40,
+                            //   color: Colors.white70,
+                            // ),
+                            Container(
+                              height: 60,
+                              width: 60,
+                              child: Image.asset("assets/calories.png"),
                             ),
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              "Calories",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white70,
-                                  fontSize: 15),
-                            )
+                            // Text(
+                            //   "Calories",
+                            //   style: TextStyle(
+                            //       fontWeight: FontWeight.bold,
+                            //       color: Colors.white70,
+                            //       fontSize: 15),
+                            // )
                           ],
                         ),
                       ),

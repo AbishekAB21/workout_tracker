@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:workout_tracker/models/water.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class WaterTracker extends StatefulWidget {
   const WaterTracker({super.key});
@@ -36,16 +37,16 @@ void DecreaseWaterPercent() {
 }
 
 class _WaterTrackerState extends State<WaterTracker> {
-
-  // Hive 
+  // Hive
   late Box<Water> waterBox;
 
   @override
   void initState() {
     super.initState();
-    
+
     waterBox = Hive.box<Water>('waterbox');
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,13 +56,7 @@ class _WaterTrackerState extends State<WaterTracker> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Water Tracker",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white70),
-              ),
+              Text("Water Tracker", style: apptheme.titleText),
             ],
           ),
         ),
@@ -73,13 +68,8 @@ class _WaterTrackerState extends State<WaterTracker> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Monitor your daily water intake & stay hydrated !",
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white70),
-              ),
+              Text("Monitor your daily water intake & stay hydrated !",
+                  style: apptheme.labelText),
             ],
           ),
         ),
@@ -93,8 +83,8 @@ class _WaterTrackerState extends State<WaterTracker> {
               CircularPercentIndicator(
                 radius: 100,
                 lineWidth: 15,
-                progressColor: Colors.white70,
-                backgroundColor: Colors.deepPurpleAccent.shade200,
+                progressColor: apptheme.waterColor,
+                backgroundColor: apptheme.secondaryColor,
                 percent: waterPercent,
                 circularStrokeCap: CircularStrokeCap.round,
                 center: Column(
@@ -110,16 +100,26 @@ class _WaterTrackerState extends State<WaterTracker> {
                               });
                               _updateHive();
                             },
-                            icon: Icon(
-                              Icons.add,
-                              size: 25,
-                              color: Colors.white70,
+                            icon:
+                                // Icon(
+                                //   Icons.add,
+                                //   size: 25,
+                                //   color: apptheme.foregroundColor,
+                                // )
+                                Container(
+                              height: 20,
+                              width: 20,
+                              child: Image.asset("assets/plus.png"),
                             )),
-                        Icon(
-                          Icons.water_drop_rounded,
-                          size: 30,
-                          color: Colors.white70,
-                        ),
+                        // Icon(
+                        //   Icons.water_drop_rounded,
+                        //   size: 30,
+                        //   color: apptheme.waterColor,
+                        // ),
+                        Container(
+                            height: 25,
+                            width: 25,
+                            child: Image.asset("assets/water.png")),
                         IconButton(
                             onPressed: () {
                               setState(() {
@@ -127,17 +127,23 @@ class _WaterTrackerState extends State<WaterTracker> {
                               });
                               _updateHive();
                             },
-                            icon: Icon(
-                              Icons.remove,
-                              size: 25,
-                              color: Colors.white70,
+                            icon:
+                                // Icon(
+                                //   Icons.remove,
+                                //   size: 25,
+                                //   color: apptheme.foregroundColor,
+                                // )
+                                Container(
+                              height: 20,
+                              width: 20,
+                              child: Image.asset("assets/minus.png"),
                             )),
                       ],
                     ),
-                    Text(
-                      "Per Glass",
-                      style: TextStyle(color: Colors.white70),
-                    )
+                    // Text(
+                    //   "Per Glass",
+                    //   style: apptheme.labelText,
+                    // )
                   ],
                 ),
               ),
@@ -147,7 +153,7 @@ class _WaterTrackerState extends State<WaterTracker> {
       ],
     );
   }
-  
+
   void _updateHive() {
     waterBox.put('waterkey', Water(waterPercent: waterPercent));
   }

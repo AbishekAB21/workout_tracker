@@ -119,7 +119,7 @@ class _BreakfastTileState extends State<BreakfastTile> {
           },
           child: Icon(
             Icons.add_rounded,
-            color: apptheme.foregroundColor,
+            color: apptheme.primaryColor,
           ),
         ),
         body: _buildfoodList());
@@ -132,9 +132,10 @@ class _BreakfastTileState extends State<BreakfastTile> {
         itemBuilder: (context, index) {
           final breakfastfood = Breakfastfoodlist[index];
           return ListTile(
+            tileColor: apptheme.secondaryColor,
             title: Text(
               breakfastfood.foodName,
-              style: apptheme.titleText,
+              style: apptheme.listText,
             ),
             subtitle: Row(
               mainAxisSize: MainAxisSize.min,
@@ -162,9 +163,15 @@ class _BreakfastTileState extends State<BreakfastTile> {
                 ),
               ],
             ),
-            leading: Icon(
-              Icons.fastfood_rounded,
-              color: apptheme.foregroundColor,
+            leading: 
+            // Icon(
+            //   Icons.fastfood_rounded,
+            //   color: apptheme.foregroundColor,
+            // ),
+            Container(
+              height: 35,
+              width: 35,
+              child: Image.asset("assets/breakfast.png"),
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,

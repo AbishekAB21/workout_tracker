@@ -17,11 +17,11 @@ class Textfields extends StatelessWidget {
         enabled: enableEditing,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: apptheme.primaryColor)),
+              borderSide: BorderSide(color: apptheme.borderColor)),
           focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white54)),
+              OutlineInputBorder(borderSide: BorderSide(color: apptheme.borderColor)),
           filled: true,
-          fillColor: apptheme.secondaryColor,
+          fillColor: apptheme.primaryColor,
           hintText: hintText,
           hintStyle: apptheme.hintText,
           label: Text(hintText),

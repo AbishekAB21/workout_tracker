@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class CurvedNavBar extends StatefulWidget {
   const CurvedNavBar({super.key});
@@ -24,8 +25,8 @@ class _CurvedNavBarState extends State<CurvedNavBar> {
       height: 70,
       
       animationDuration: Duration(milliseconds: 300),
-      backgroundColor: Colors.deepPurple,
-      color: Colors.deepPurpleAccent.shade200, 
+      backgroundColor: apptheme.primaryColor,
+      color: apptheme.secondaryColor, 
       items: items,
       index: index,
       onTap: (selectedindex) {

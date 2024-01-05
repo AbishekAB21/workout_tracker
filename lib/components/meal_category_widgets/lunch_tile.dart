@@ -136,6 +136,7 @@ class _LunchTileState extends State<LunchTile> {
         itemBuilder: (context, index) {
           final lunchFood = lunchFoodList[index];
           return ListTile(
+            tileColor: apptheme.secondaryColor,
             title: Text(
               lunchFood.foodName,
               style: apptheme.titleText,
@@ -165,9 +166,15 @@ class _LunchTileState extends State<LunchTile> {
                 ),
               ],
             ),
-            leading: Icon(
-              Icons.fastfood_rounded,
-              color: apptheme.foregroundColor,
+            leading: 
+            // Icon(
+            //   Icons.fastfood_rounded,
+            //   color: apptheme.foregroundColor,
+            // ),
+            Container(
+              height: 35,
+              width: 35,
+              child: Image.asset("assets/lunch.png"),
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,

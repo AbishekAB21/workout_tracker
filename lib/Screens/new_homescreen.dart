@@ -23,7 +23,7 @@ class _HomeScreenMachTwoState extends State<HomeScreenMachTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         appBar: _homeAppBar(context),
         bottomNavigationBar: CurvedNavBar(),
         body: SingleChildScrollView(
@@ -84,7 +84,7 @@ class _HomeScreenMachTwoState extends State<HomeScreenMachTwo> {
 
   AppBar _homeAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: apptheme.primaryColor,
       toolbarHeight: 35,
       elevation: 0,
       actions: [
@@ -98,7 +98,7 @@ class _HomeScreenMachTwoState extends State<HomeScreenMachTwo> {
             },
             icon: Icon(
               Icons.settings,
-              color: Colors.white,
+              color: apptheme.foregroundColor
             ))
       ],
     );
