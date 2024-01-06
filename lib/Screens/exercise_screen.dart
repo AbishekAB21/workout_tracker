@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:workout_tracker/components/exercise_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';
 import 'package:workout_tracker/models/exercise.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class ExerciseScreen extends StatefulWidget {
   final String workoutname;
@@ -33,27 +34,27 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         title:
-            Text("Add a new exercise", style: TextStyle(color: Colors.white)),
+            Text("Add a new exercise", style: apptheme.titleText),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             // Exercise Name
             TextField(
-              style: TextStyle(color: Colors.white),
+              style: apptheme.inputText,
               controller: exerciseNameController,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.deepPurpleAccent.shade200,
+                fillColor: apptheme.primaryColor,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white70)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Enter New Exercise Name",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: apptheme.hintText,
               ),
             ),
             SizedBox(
@@ -61,18 +62,18 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             ),
             // Weight
             TextField(
-              style: TextStyle(color: Colors.white),
+              style: apptheme.inputText,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.deepPurpleAccent.shade200,
+                fillColor: apptheme.primaryColor,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white70)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Weight used",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: apptheme.hintText,
               ),
               controller: weightController,
             ),
@@ -81,18 +82,18 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             ),
             // Reps
             TextField(
-              style: TextStyle(color: Colors.white),
+              style: apptheme.inputText,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.deepPurpleAccent.shade200,
+                fillColor: apptheme.primaryColor,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white70)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Reps done",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: apptheme.hintText,
               ),
               controller: repsController,
             ),
@@ -101,18 +102,18 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             ),
             // Sets
             TextField(
-              style: TextStyle(color: Colors.white),
+              style: apptheme.inputText,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.deepPurpleAccent.shade200,
+                fillColor: apptheme.primaryColor,
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white70)),
+                    borderSide: BorderSide(color: apptheme.borderColor)),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 hintText: "Sets done",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: apptheme.hintText,
               ),
               controller: setsController,
             ),
@@ -123,14 +124,14 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
             onPressed: save,
             child: Text(
               "Save",
-              style: TextStyle(color: Colors.white),
+              style: apptheme.buttonTextColor,
             ),
           ),
           MaterialButton(
             onPressed: cancel,
             child: Text(
               "Cancel",
-              style: TextStyle(color: Colors.white),
+              style: apptheme.buttonTextColor,
             ),
           )
         ],
@@ -170,10 +171,10 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Colors.deepPurple,
+          iconTheme: IconThemeData(color: apptheme.foregroundColor),
+          backgroundColor: apptheme.primaryColor,
           title: Text(
             widget.workoutname,
             style: TextStyle(color: Colors.white),
@@ -182,11 +183,11 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
           elevation: 0,
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.deepPurpleAccent.shade200,
+          backgroundColor: apptheme.secondaryColor,
           onPressed: createNewExercise,
-          child: const Icon(
+          child:  Icon(
             Icons.add,
-            color: Colors.white,
+            color: apptheme.primaryColor,
           ),
         ),
         body: ListView.builder(

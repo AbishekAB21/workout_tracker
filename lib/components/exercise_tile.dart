@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 // ignore: must_be_immutable
 class ExerciseTile extends StatelessWidget {
@@ -24,10 +25,15 @@ class ExerciseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-      color: Colors.deepPurpleAccent.shade200,
+      color: apptheme.secondaryColor,
       child: ListTile(
         // dense: true,
-        leading:  Icon(Icons.sports_gymnastics_rounded, color: Colors.white70 , size: 35,),
+        leading:
+            // Icon(Icons.sports_gymnastics_rounded, color: Colors.white70 , size: 35,),
+            Container(
+                height: 35,
+                width: 35,
+                child: Image.asset("assets/exercise.png")),
         title: Text(
           exerciseName,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
@@ -36,39 +42,42 @@ class ExerciseTile extends StatelessWidget {
           children: [
             // Weight
             Chip(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              padding: EdgeInsets.symmetric(horizontal: 3),
-              side: BorderSide(color: Colors.white),
-                backgroundColor: Colors.deepPurpleAccent.shade200,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5)),
+                padding: EdgeInsets.symmetric(horizontal: 3),
+                side: BorderSide(color: apptheme.secondaryColor),
+                backgroundColor: apptheme.secondaryColor,
                 label: Text(
                   "${weight} kg",
-                  style: TextStyle(color: Colors.white),
+                  style: apptheme.labelText,
                 )),
             const SizedBox(
               width: 5,
             ),
             // Reps
             Chip(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              padding: EdgeInsets.symmetric(horizontal: 3),
-              side: BorderSide(color: Colors.white),
-                backgroundColor: Colors.deepPurpleAccent.shade200,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5)),
+                padding: EdgeInsets.symmetric(horizontal: 3),
+                side: BorderSide(color: apptheme.secondaryColor),
+                backgroundColor: apptheme.secondaryColor,
                 label: Text(
                   "${reps} Reps",
-                  style: TextStyle(color: Colors.white),
+                  style: apptheme.labelText,
                 )),
             const SizedBox(
               width: 5,
             ),
             // Sets
             Chip(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              padding: EdgeInsets.symmetric(horizontal: 3),
-              side: BorderSide(color: Colors.white),
-                backgroundColor: Colors.deepPurpleAccent.shade200,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5)),
+                padding: EdgeInsets.symmetric(horizontal: 3),
+                side: BorderSide(color: apptheme.secondaryColor),
+                backgroundColor: apptheme.secondaryColor,
                 label: Text(
                   "${sets} Sets",
-                  style: TextStyle(color: Colors.white),
+                  style: apptheme.labelText,
                 )),
           ],
         ),

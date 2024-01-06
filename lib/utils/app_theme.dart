@@ -47,7 +47,7 @@ class AppDefaultTheme extends AppTheme {
           inputText: TextStyle(color: Colors.black, fontSize: 12),
           labelText: TextStyle(color: Colors.black, fontSize: 15),
           hintText: TextStyle(color: Colors.grey, fontSize: 12),
-          buttonTextColor: TextStyle(color: Colors.white),
+          buttonTextColor: TextStyle(color: Colors.black),
           titleText: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
           SnackBarColor: Colors.red,

@@ -4,10 +4,12 @@ import 'package:workout_tracker/screens/exercise_screen.dart';
 import 'package:workout_tracker/components/heat_map.dart';
 import 'package:workout_tracker/components/workout_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';
+import 'package:workout_tracker/utils/app_theme.dart';
 
 class WorkoutScreen extends StatefulWidget {
- 
-  WorkoutScreen({super.key,});
+  WorkoutScreen({
+    super.key,
+  });
 
   @override
   State<WorkoutScreen> createState() => _WorkoutScreenState();
@@ -19,9 +21,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     super.initState();
 
     Provider.of<WorkoutData>(context, listen: false).initializeWorkoutList();
-   
   }
-
 
 // Form key
   final textfieldkey = GlobalKey<FormState>();
@@ -36,7 +36,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: apptheme.primaryColor,
         title: Text(
           "Create New Workout",
           style: TextStyle(color: Colors.white),
@@ -50,18 +50,18 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
               }
               return null;
             },
-            style: TextStyle(color: Colors.white),
+            style: apptheme.inputText,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.deepPurpleAccent.shade200,
+              fillColor: apptheme.primaryColor,
               enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple)),
+                  borderSide: BorderSide(color: apptheme.borderColor)),
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70)),
+                  borderSide: BorderSide(color: apptheme.borderColor)),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               hintText: "Enter New Workout Name",
-              hintStyle: TextStyle(color: Colors.white70),
+              hintStyle: apptheme.hintText,
             ),
             controller: newWorkoutNameController,
           ),
@@ -69,11 +69,11 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
         actions: [
           MaterialButton(
             onPressed: save,
-            child: Text("Save", style: TextStyle(color: Colors.white)),
+            child: Text("Save", style: apptheme.buttonTextColor),
           ),
           MaterialButton(
             onPressed: cancel,
-            child: Text("Cancel", style: TextStyle(color: Colors.white)),
+            child: Text("Cancel", style: apptheme.buttonTextColor),
           )
         ],
       ),
@@ -123,17 +123,17 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: apptheme.primaryColor,
           //drawer: WorkoutScreenDrawer(),
           appBar: AppBar(
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: apptheme.primaryColor,
             //title: Text("General Workouts", style: TextStyle(color: Colors.white),),
             iconTheme: IconThemeData(color: Colors.white),
             centerTitle: true,
             elevation: 0,
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.deepPurpleAccent.shade200,
+            backgroundColor: apptheme.secondaryColor,
             onPressed: createNewWorkout,
             child: Icon(
               Icons.add,
@@ -145,15 +145,19 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.sports_gymnastics_rounded,
-                    color: Colors.white70,
-                    size: 50,
-                  )
+                  // Icon(
+                  //   Icons.sports_gymnastics_rounded,
+                  //   color: Colors.white70,
+                  //   size: 50,
+                  // )
+                  Container(
+                      height: 60,
+                      width: 60,
+                      child: Image.asset("assets/weightlifting.png")),
                 ],
               ),
               SizedBox(
-                height: 5,
+                height: 6,
               ),
               // Heat Map
               WorkouHeatMap(
@@ -180,10 +184,10 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    backgroundColor: Colors.deepPurple,
+                                    backgroundColor: apptheme.primaryColor,
                                     content: Text(
                                       "Are you sure you want to delete $workoutName ?",
-                                      style: TextStyle(color: Colors.white70),
+                                      style: apptheme.titleText,
                                     ),
                                     actions: [
                                       // Yes
@@ -197,7 +201,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                           child: Text(
                                             "Yes",
                                             style:
-                                                TextStyle(color: Colors.white),
+                                                apptheme.buttonTextColor,
                                           )),
 
                                       //Cancel
@@ -207,7 +211,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                           child: Text(
                                             "Cancel",
                                             style:
-                                                TextStyle(color: Colors.white),
+                                                apptheme.buttonTextColor,
                                           )),
                                     ],
                                   );
@@ -222,28 +226,27 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    backgroundColor: Colors.deepPurple,
+                                    backgroundColor: apptheme.primaryColor,
                                     title: Text("Edit Workout Name",
-                                        style: TextStyle(color: Colors.white)),
+                                        style: apptheme.titleText),
                                     content: TextField(
                                       controller: editController,
-                                      style: TextStyle(color: Colors.white),
+                                      style: apptheme.labelText,
                                       decoration: InputDecoration(
                                         fillColor:
-                                            Colors.deepPurpleAccent.shade200,
+                                            apptheme.primaryColor,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                                color: Colors.deepPurple)),
+                                                color: apptheme.borderColor)),
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                                color: Colors.white70)),
+                                                color: apptheme.borderColor)),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         hintText: "Enter Updated Workout Name",
-                                        hintStyle: TextStyle(
-                                            color: Colors.white, fontSize: 15),
+                                        hintStyle: apptheme.hintText
                                       ),
                                     ),
                                     actions: [
@@ -260,15 +263,14 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                           child: Text(
                                             "Update",
                                             style:
-                                                TextStyle(color: Colors.white),
+                                                apptheme.buttonTextColor,
                                           )),
                                       TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
                                           child: Text("Cancel",
-                                              style: TextStyle(
-                                                  color: Colors.white)))
+                                              style: apptheme.buttonTextColor))
                                     ],
                                   );
                                 },
