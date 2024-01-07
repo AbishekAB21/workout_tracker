@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:workout_tracker/utils/app_theme.dart';
 
 class CurvedNavBar extends StatefulWidget {
-  const CurvedNavBar({super.key});
+  final Function(int) onTap;
+  const CurvedNavBar({super.key, required this.onTap});
 
   @override
   State<CurvedNavBar> createState() => _CurvedNavBarState();
@@ -43,7 +44,7 @@ class _CurvedNavBarState extends State<CurvedNavBar> {
         setState(() {
            index = selectedindex ;
         });
-
+        widget.onTap(index);
       },
       );
   }

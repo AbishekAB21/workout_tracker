@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepPurple,
       appBar: _homeScreenAppBar(),
-      bottomNavigationBar: CurvedNavBar(),
+      // bottomNavigationBar: CurvedNavBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
