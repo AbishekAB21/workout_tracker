@@ -166,10 +166,6 @@ class _DinnerTileState extends State<DinnerTile> {
               ],
             ),
             leading: 
-            // Icon(
-            //   Icons.fastfood_rounded,
-            //   color: apptheme.foregroundColor,
-            // ),
             Container(
               height: 35,
               width: 35,

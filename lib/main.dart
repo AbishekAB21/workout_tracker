@@ -34,7 +34,8 @@ void main() async{
 
   // Adding default values 
   BreakfastDatabseHelper.addDefaultBreakfastData();
-    
+  LunchDatabseHelper.addDefaultLunchData();
+  DinnerDatabseHelper.addDefaultDinnerData();  
      
 
   // Open Hive Box

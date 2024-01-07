@@ -11,7 +11,6 @@ class BreakfastDatabseHelper {
   static Future<void> addDefaultBreakfastData() async {
     final box = await Hive.openBox<Breakfast>(boxName);
 
-    // Adding default Breakfast items here
     final defaultBreakfast1 =
         Breakfast(foodName: "Chicken", protein: 30, calorie: 100, servings: 1);
     final defaultBreakfast2 =
@@ -48,6 +47,17 @@ class BreakfastDatabseHelper {
 class LunchDatabseHelper {
   static const String lunchbox = 'lunchBox';
 
+  static Future<void> addDefaultLunchData() async {
+    final lbox = await Hive.openBox<Lunch>(lunchbox);
+
+    final defaultLunch1 =
+        Lunch(foodName: "Egg Rice", protein: 45, calorie: 200, servings: 1);
+    final defaultLunch2 =
+        Lunch(foodName: "Egg Sandwich", protein: 30, calorie: 100, servings: 2);
+
+    await lbox.addAll([defaultLunch1, defaultLunch2]);
+  }
+
   static Future<void> addLunchFood(Lunch lunchFood) async {
     final lbox = await Hive.openBox<Lunch>(lunchbox);
     await lbox.add(lunchFood);
@@ -74,6 +84,20 @@ class LunchDatabseHelper {
 
 class DinnerDatabseHelper {
   static const String dinnerbox = 'dinnerbox';
+
+  static Future<void> addDefaultDinnerData() async {
+    final dbox = await Hive.openBox<Dinner>(dinnerbox);
+
+    final defaultDinner1 = Dinner(
+        foodName: "Schezwan Chicken Fried Rice",
+        protein: 45,
+        calorie: 200,
+        servings: 1);
+    final defaultDinner2 = Dinner(
+        foodName: "Whey Protein Shake", protein: 25, calorie: 200, servings: 1);
+
+    await dbox.addAll([defaultDinner1, defaultDinner2]);
+  }
 
   static Future<void> addDinnerFood(Dinner dinnerFood) async {
     final dbox = await Hive.openBox<Dinner>(dinnerbox);
