@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:workout_tracker/data/diet_database_helper.dart';
 import 'package:workout_tracker/models/breakfast.dart';
 import 'package:workout_tracker/models/dinner.dart';
 import 'package:workout_tracker/models/exercise.dart';
@@ -30,6 +31,9 @@ void main() async{
      Hive.registerAdapter(WorkoutAdapter());
      Hive.registerAdapter(ExerciseAdapter());
      Hive.registerAdapter(WaterAdapter());
+
+  // Adding default values 
+  BreakfastDatabseHelper.addDefaultBreakfastData();
     
      
 

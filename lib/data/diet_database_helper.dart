@@ -8,6 +8,18 @@ import 'package:workout_tracker/models/lunch.dart';
 class BreakfastDatabseHelper {
   static const String boxName = 'breakfastBox';
 
+  static Future<void> addDefaultBreakfastData() async {
+    final box = await Hive.openBox<Breakfast>(boxName);
+
+    // Adding default Breakfast items here
+    final defaultBreakfast1 =
+        Breakfast(foodName: "Chicken", protein: 30, calorie: 100, servings: 1);
+    final defaultBreakfast2 =
+        Breakfast(foodName: 'Eggs', protein: 30, calorie: 80, servings: 3);
+
+    await box.addAll([defaultBreakfast1, defaultBreakfast2]);
+  }
+
   static Future<void> addBreakfastFood(Breakfast breakfastFood) async {
     final box = await Hive.openBox<Breakfast>(boxName);
     await box.add(breakfastFood);
