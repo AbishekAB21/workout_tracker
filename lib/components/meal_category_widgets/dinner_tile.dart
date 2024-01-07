@@ -165,8 +165,7 @@ class _DinnerTileState extends State<DinnerTile> {
                 ),
               ],
             ),
-            leading: 
-            Container(
+            leading: Container(
               height: 35,
               width: 35,
               child: Image.asset("assets/dinner.png"),
@@ -211,7 +210,7 @@ class _DinnerTileState extends State<DinnerTile> {
                     },
                     icon: Icon(
                       Icons.delete_rounded,
-                      color: apptheme.foregroundColor,
+                      color: apptheme.primaryColor,
                     )),
                 IconButton(
                     onPressed: () {
@@ -219,7 +218,10 @@ class _DinnerTileState extends State<DinnerTile> {
                         context: context,
                         builder: (context) => AlertDialog(
                           backgroundColor: apptheme.primaryColor,
-                          title: Text("Edit existing food details ?", style: apptheme.titleText,),
+                          title: Text(
+                            "Edit existing food details ?",
+                            style: apptheme.titleText,
+                          ),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -292,7 +294,7 @@ class _DinnerTileState extends State<DinnerTile> {
                     },
                     icon: Icon(
                       Icons.edit_rounded,
-                      color: apptheme.foregroundColor,
+                      color: apptheme.primaryColor,
                     ))
               ],
             ),
@@ -303,7 +305,7 @@ class _DinnerTileState extends State<DinnerTile> {
             ),
         itemCount: dinnerFoodList.length);
   }
-  
+
   void clearCntrl() {
     dinnerController.clear();
     proteinController.clear();
