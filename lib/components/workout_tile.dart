@@ -49,11 +49,6 @@ class WorkoutTile extends StatelessWidget {
           ],
         ),
         leading: 
-        // Icon(
-        //   Icons.sports_gymnastics_rounded,
-        //   color: Colors.white70,
-        //   size: 35,
-        // ),
         Container(
                       height: 35,
                       width: 35,

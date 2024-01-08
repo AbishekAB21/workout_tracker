@@ -192,48 +192,34 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         ),
         body: ListView.builder(
             itemCount: value.numberofExercisesInWorkout(widget.workoutname),
-            itemBuilder: (context, index) => Dismissible(
-                  background: Container(
-                    margin: EdgeInsets.only(top: 20),
-                    color: Colors.red.shade800,
-                    child: Icon(Icons.delete),
-                  ),
-                  key: ValueKey<Exercise>(value
+            itemBuilder: (context, index) => ExerciseTile(
+              exerciseName: value
+                  .getRelevantWorkout(widget.workoutname)
+                  .exercises[index]
+                  .name,
+              weight: value
+                  .getRelevantWorkout(widget.workoutname)
+                  .exercises[index]
+                  .weight,
+              reps: value
+                  .getRelevantWorkout(widget.workoutname)
+                  .exercises[index]
+                  .reps,
+              sets: value
+                  .getRelevantWorkout(widget.workoutname)
+                  .exercises[index]
+                  .sets,
+              isCompleted: value
+                  .getRelevantWorkout(widget.workoutname)
+                  .exercises[index]
+                  .isCompleted,
+              onCheckBoxChanged: (val) => onCheckBoxChanged(
+                  widget.workoutname,
+                  value
                       .getRelevantWorkout(widget.workoutname)
-                      .exercises[index]),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (direction) {
-                    // Delete from Database
-                  },
-                  child: ExerciseTile(
-                    exerciseName: value
-                        .getRelevantWorkout(widget.workoutname)
-                        .exercises[index]
-                        .name,
-                    weight: value
-                        .getRelevantWorkout(widget.workoutname)
-                        .exercises[index]
-                        .weight,
-                    reps: value
-                        .getRelevantWorkout(widget.workoutname)
-                        .exercises[index]
-                        .reps,
-                    sets: value
-                        .getRelevantWorkout(widget.workoutname)
-                        .exercises[index]
-                        .sets,
-                    isCompleted: value
-                        .getRelevantWorkout(widget.workoutname)
-                        .exercises[index]
-                        .isCompleted,
-                    onCheckBoxChanged: (val) => onCheckBoxChanged(
-                        widget.workoutname,
-                        value
-                            .getRelevantWorkout(widget.workoutname)
-                            .exercises[index]
-                            .name),
-                  ),
-                )),
+                      .exercises[index]
+                      .name),
+            )),
       ),
     );
   }

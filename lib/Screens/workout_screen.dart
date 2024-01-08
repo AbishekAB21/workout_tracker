@@ -145,11 +145,6 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Icon(
-                  //   Icons.sports_gymnastics_rounded,
-                  //   color: Colors.white70,
-                  //   size: 50,
-                  // )
                   Container(
                       height: 60,
                       width: 60,
