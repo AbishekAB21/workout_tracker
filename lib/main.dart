@@ -16,9 +16,8 @@ void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();  
   // Initialize Hive 
-     await Hive.initFlutter();
+    await Hive.initFlutter();
      
-
     await Hive.openBox<Breakfast>('breakfastBox');
     await Hive.openBox<Lunch>('lunchBox');
     await Hive.openBox<Dinner>('dinnerbox');
@@ -33,9 +32,9 @@ void main() async{
      Hive.registerAdapter(WaterAdapter());
 
   // Adding default values 
-  BreakfastDatabseHelper.addDefaultBreakfastData();
-  LunchDatabseHelper.addDefaultLunchData();
-  DinnerDatabseHelper.addDefaultDinnerData();  
+     BreakfastDatabseHelper.addDefaultBreakfastData();
+     LunchDatabseHelper.addDefaultLunchData();
+     DinnerDatabseHelper.addDefaultDinnerData();  
      
 
   // Open Hive Box

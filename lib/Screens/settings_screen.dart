@@ -31,10 +31,10 @@ class SettingsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.settings,
-                        color: apptheme.foregroundColor,
-                        size: 50,
+                      Container(
+                        height: 60,
+                        width: 60,
+                        child: Image.asset("assets/settings.png"),
                       )
                     ],
                   ),

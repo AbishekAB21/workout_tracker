@@ -10,10 +10,10 @@ class ProfileIconText extends StatelessWidget {
       children: [
         Column(
           children: [
-            Icon(
-              Icons.person_4_rounded,
-              size: 50,
-              color: Colors.white,
+            Container(
+              height: 60,
+              width: 60,
+              child: Image.asset("assets/profile.png"),
             ),
             SizedBox(
               height: 5,
