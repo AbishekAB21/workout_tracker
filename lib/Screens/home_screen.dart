@@ -7,7 +7,6 @@ import 'package:workout_tracker/screens/login_screen.dart';
 import 'package:workout_tracker/screens/protein_calculator.dart';
 import 'package:workout_tracker/screens/splash_screen.dart';
 import 'package:workout_tracker/screens/workout_screen.dart';
-import 'package:workout_tracker/components/curved_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   //bool isAdmin;

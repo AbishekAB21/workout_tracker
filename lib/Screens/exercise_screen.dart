@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:workout_tracker/components/exercise_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';
-import 'package:workout_tracker/models/exercise.dart';
 import 'package:workout_tracker/utils/app_theme.dart';
 
 class ExerciseScreen extends StatefulWidget {
