@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:workout_tracker/components/meal_category_widgets/text_field_meals.dart';
 import 'package:workout_tracker/data/diet_database_helper.dart';
 import 'package:workout_tracker/models/dinner.dart';
@@ -134,169 +135,169 @@ class _DinnerTileState extends State<DinnerTile> {
     return ListView.separated(
         itemBuilder: (context, index) {
           final dinnerFood = dinnerFoodList[index];
-          return ListTile(
-            tileColor: apptheme.secondaryColor,
-            title: Text(
-              dinnerFood.foodName,
-              style: apptheme.titleText,
-            ),
-            subtitle: Row(
-              children: [
-                Text(
-                  "Protein : " + dinnerFood.protein.toString(),
-                  style: apptheme.labelText,
-                ),
-                SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  "Calorie : " + dinnerFood.calorie.toString(),
-                  style: apptheme.labelText,
-                ),
-                SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  "Servings : " + dinnerFood.servings.toString(),
-                  style: apptheme.labelText,
-                ),
-                SizedBox(
-                  width: 4,
-                ),
-              ],
-            ),
-            leading: Container(
-              height: 35,
-              width: 35,
-              child: Image.asset("assets/dinner.png"),
-            ),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          backgroundColor: apptheme.primaryColor,
-                          title: Text(
-                            "Delete food item ?",
-                            style: apptheme.titleText,
+          return Slidable(
+            startActionPane: ActionPane(motion: StretchMotion(), children: [
+              SlidableAction(
+                onPressed: (context) {
+                  // Edit
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: apptheme.primaryColor,
+                      title: Text(
+                        "Edit existing food details ?",
+                        style: apptheme.titleText,
+                      ),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          MealsTextFields(
+                              Controller: newFoodNameController,
+                              hinttext: "What did you have for dinner ?",
+                              label: "What did you have for dinner ?"),
+                          SizedBox(
+                            height: 6,
                           ),
-                          actions: [
-                            TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    DinnerDatabseHelper.DeleteDinnerItems(
-                                        index);
-                                  });
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  "Yes",
-                                  style: apptheme.buttonTextColor,
-                                )),
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  "Cancel",
-                                  style: apptheme.buttonTextColor,
-                                ))
-                          ],
-                        ),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.delete_rounded,
-                      color: apptheme.primaryColor,
-                    )),
-                IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          backgroundColor: apptheme.primaryColor,
-                          title: Text(
-                            "Edit existing food details ?",
-                            style: apptheme.titleText,
+                          MealsTextFields(
+                              Controller: NewProteinController,
+                              hinttext: "Enter protein content",
+                              label: "Enter protein content"),
+                          SizedBox(
+                            height: 6,
                           ),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              MealsTextFields(
-                                  Controller: newFoodNameController,
-                                  hinttext: "What did you have for dinner ?",
-                                  label: "What did you have for dinner ?"),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              MealsTextFields(
-                                  Controller: NewProteinController,
-                                  hinttext: "Enter protein content",
-                                  label: "Enter protein content"),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              MealsTextFields(
-                                  Controller: NewCalorieController,
-                                  hinttext: "Enter calorie content",
-                                  label: "Enter calorie content"),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              MealsTextFields(
-                                  Controller: NewServingsController,
-                                  hinttext: "Enter number of servings",
-                                  label: "Enter number of servings"),
-                              SizedBox(
-                                height: 6,
-                              ),
-                            ],
+                          MealsTextFields(
+                              Controller: NewCalorieController,
+                              hinttext: "Enter calorie content",
+                              label: "Enter calorie content"),
+                          SizedBox(
+                            height: 6,
                           ),
-                          actions: [
-                            TextButton(
-                                onPressed: () {
-                                  final dinnerFood = Dinner(
-                                      foodName: newFoodNameController.text,
-                                      protein: int.tryParse(
-                                              NewProteinController.text) ??
+                          MealsTextFields(
+                              Controller: NewServingsController,
+                              hinttext: "Enter number of servings",
+                              label: "Enter number of servings"),
+                          SizedBox(
+                            height: 6,
+                          ),
+                        ],
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              final dinnerFood = Dinner(
+                                  foodName: newFoodNameController.text,
+                                  protein:
+                                      int.tryParse(NewProteinController.text) ??
                                           0,
-                                      calorie: int.tryParse(
-                                              NewCalorieController.text) ??
+                                  calorie:
+                                      int.tryParse(NewCalorieController.text) ??
                                           0,
-                                      servings: int.tryParse(
-                                              NewServingsController.text) ??
-                                          0);
-                                  setState(() {
-                                    DinnerDatabseHelper.UpdateDinnerItems(
-                                        index, dinnerFood);
-                                  });
-                                  clearCntrl();
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  "Update",
-                                  style: apptheme.buttonTextColor,
-                                )),
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  "Cancel",
-                                  style: apptheme.buttonTextColor,
-                                ))
-                          ],
-                        ),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.edit_rounded,
-                      color: apptheme.primaryColor,
-                    ))
-              ],
+                                  servings: int.tryParse(
+                                          NewServingsController.text) ??
+                                      0);
+                              setState(() {
+                                DinnerDatabseHelper.UpdateDinnerItems(
+                                    index, dinnerFood);
+                              });
+                              clearCntrl();
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              "Update",
+                              style: apptheme.buttonTextColor,
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              "Cancel",
+                              style: apptheme.buttonTextColor,
+                            ))
+                      ],
+                    ),
+                  );
+                },
+                backgroundColor: Colors.yellow.shade700,
+                icon: Icons.edit_rounded,foregroundColor: Colors.white,
+              )
+            ]),
+            endActionPane: ActionPane(motion: StretchMotion(), children: [
+              SlidableAction(
+                onPressed: (context) {
+                  // Delete
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: apptheme.primaryColor,
+                      title: Text(
+                        "Delete food item ?",
+                        style: apptheme.titleText,
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                DinnerDatabseHelper.DeleteDinnerItems(index);
+                              });
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              "Yes",
+                              style: apptheme.buttonTextColor,
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              "Cancel",
+                              style: apptheme.buttonTextColor,
+                            ))
+                      ],
+                    ),
+                  );
+                },
+                backgroundColor: Colors.red,
+                icon: Icons.delete_rounded,foregroundColor: Colors.white,
+              )
+            ]),
+            child: ListTile(
+              tileColor: apptheme.secondaryColor,
+              title: Text(
+                dinnerFood.foodName,
+                style: apptheme.titleText,
+              ),
+              subtitle: Row(
+                children: [
+                  Text(
+                    "Protein : " + dinnerFood.protein.toString(),
+                    style: apptheme.labelText,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    "Calorie : " + dinnerFood.calorie.toString(),
+                    style: apptheme.labelText,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    "Servings : " + dinnerFood.servings.toString(),
+                    style: apptheme.labelText,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                ],
+              ),
+              leading: Container(
+                height: 35,
+                width: 35,
+                child: Image.asset("assets/dinner.png"),
+              ),
             ),
           );
         },
