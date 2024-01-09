@@ -266,7 +266,7 @@ class _BreakfastTileState extends State<BreakfastTile> {
                 tileColor: apptheme.secondaryColor,
                 title: Text(
                   breakfastfood.foodName,
-                  style: apptheme.listText,
+                  style: apptheme.titleText,
                 ),
                 subtitle: Row(
                   mainAxisSize: MainAxisSize.min,
