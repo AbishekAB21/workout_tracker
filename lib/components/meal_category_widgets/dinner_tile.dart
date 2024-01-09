@@ -262,41 +262,44 @@ class _DinnerTileState extends State<DinnerTile> {
                 icon: Icons.delete_rounded,foregroundColor: Colors.white,
               )
             ]),
-            child: ListTile(
-              tileColor: apptheme.secondaryColor,
-              title: Text(
-                dinnerFood.foodName,
-                style: apptheme.titleText,
-              ),
-              subtitle: Row(
-                children: [
-                  Text(
-                    "Protein : " + dinnerFood.protein.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Calorie : " + dinnerFood.calorie.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Servings : " + dinnerFood.servings.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                ],
-              ),
-              leading: Container(
-                height: 35,
-                width: 35,
-                child: Image.asset("assets/dinner.png"),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: ListTile(
+                tileColor: apptheme.secondaryColor,
+                title: Text(
+                  dinnerFood.foodName,
+                  style: apptheme.titleText,
+                ),
+                subtitle: Row(
+                  children: [
+                    Text(
+                      "Protein : " + dinnerFood.protein.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Calorie : " + dinnerFood.calorie.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Servings : " + dinnerFood.servings.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                  ],
+                ),
+                leading: Container(
+                  height: 35,
+                  width: 35,
+                  child: Image.asset("assets/dinner.png"),
+                ),
               ),
             ),
           );

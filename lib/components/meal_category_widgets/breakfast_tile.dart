@@ -260,42 +260,45 @@ class _BreakfastTileState extends State<BreakfastTile> {
                 foregroundColor: Colors.white,
               )
             ]),
-            child: ListTile(
-              tileColor: apptheme.secondaryColor,
-              title: Text(
-                breakfastfood.foodName,
-                style: apptheme.listText,
-              ),
-              subtitle: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Protein : " + breakfastfood.protein.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Calorie : " + breakfastfood.calorie.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Servings : " + breakfastfood.servings.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                ],
-              ),
-              leading: Container(
-                height: 35,
-                width: 35,
-                child: Image.asset("assets/breakfast.png"),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: ListTile(
+                tileColor: apptheme.secondaryColor,
+                title: Text(
+                  breakfastfood.foodName,
+                  style: apptheme.listText,
+                ),
+                subtitle: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Protein : " + breakfastfood.protein.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Calorie : " + breakfastfood.calorie.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Servings : " + breakfastfood.servings.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                  ],
+                ),
+                leading: Container(
+                  height: 35,
+                  width: 35,
+                  child: Image.asset("assets/breakfast.png"),
+                ),
               ),
             ),
           );

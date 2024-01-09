@@ -24,7 +24,6 @@ class _LunchTileState extends State<LunchTile> {
 
   @override
   void dispose() {
-
     lunchController.dispose();
     proteinController.dispose();
     calorieController.dispose();
@@ -137,63 +136,64 @@ class _LunchTileState extends State<LunchTile> {
         itemBuilder: (context, index) {
           final lunchFood = lunchFoodList[index];
           return Slidable(
-            startActionPane: ActionPane(
-              motion: StretchMotion(), 
-              children: [
-                SlidableAction(onPressed: (context) {
+            startActionPane: ActionPane(motion: StretchMotion(), children: [
+              SlidableAction(
+                onPressed: (context) {
                   // Edit
                 },
                 backgroundColor: Colors.yellow.shade700,
-                icon: Icons.edit,foregroundColor: Colors.white,
-                )
-              ]
-              ),
-              endActionPane: ActionPane(
-                motion: StretchMotion(), 
-                children: [
-                  SlidableAction(onPressed: (context) {
-                    // Delete
-                  },
-                  backgroundColor: Colors.red,
-                  icon: Icons.delete_rounded,foregroundColor: Colors.white,
-                  )
-                ]),
-            child: ListTile(
-              tileColor: apptheme.secondaryColor,
-              title: Text(
-                lunchFood.foodName,
-                style: apptheme.titleText,
-              ),
-              subtitle: Row(
-                children: [
-                  Text(
-                    "Protein : " + lunchFood.protein.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Calorie : " + lunchFood.calorie.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Servings : " + lunchFood.servings.toString(),
-                    style: apptheme.labelText,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                ],
-              ),
-              leading: 
-              Container(
-                height: 35,
-                width: 35,
-                child: Image.asset("assets/lunch.png"),
+                icon: Icons.edit,
+                foregroundColor: Colors.white,
+              )
+            ]),
+            endActionPane: ActionPane(motion: StretchMotion(), children: [
+              SlidableAction(
+                onPressed: (context) {
+                  // Delete
+                },
+                backgroundColor: Colors.red,
+                icon: Icons.delete_rounded,
+                foregroundColor: Colors.white,
+              )
+            ]),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: ListTile(
+                tileColor: apptheme.secondaryColor,
+                title: Text(
+                  lunchFood.foodName,
+                  style: apptheme.titleText,
+                ),
+                subtitle: Row(
+                  children: [
+                    Text(
+                      "Protein : " + lunchFood.protein.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Calorie : " + lunchFood.calorie.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Servings : " + lunchFood.servings.toString(),
+                      style: apptheme.labelText,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                  ],
+                ),
+                leading: Container(
+                  height: 35,
+                  width: 35,
+                  child: Image.asset("assets/lunch.png"),
+                ),
               ),
             ),
           );

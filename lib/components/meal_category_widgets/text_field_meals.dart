@@ -31,11 +31,11 @@ class _MealsTextFieldsState extends State<MealsTextFields> {
         ),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
-            borderSide: BorderSide(color: apptheme.primaryColor)),
+            borderSide: BorderSide(color: apptheme.borderColor)),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
-            borderSide: BorderSide(color: apptheme.borderColor)),
-        fillColor: apptheme.secondaryColor,
+            borderSide: BorderSide(color: apptheme.disabledColor)),
+        fillColor: apptheme.primaryColor,
         filled: true,
       ),
     );
