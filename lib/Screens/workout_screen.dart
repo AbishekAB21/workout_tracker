@@ -128,7 +128,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
           appBar: AppBar(
             backgroundColor: apptheme.primaryColor,
             //title: Text("General Workouts", style: TextStyle(color: Colors.white),),
-            iconTheme: IconThemeData(color: Colors.white),
+            iconTheme: IconThemeData(color: apptheme.foregroundColor),
             centerTitle: true,
             elevation: 0,
           ),

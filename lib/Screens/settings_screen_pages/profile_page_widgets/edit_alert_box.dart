@@ -18,7 +18,7 @@ class _EditAlertBoxState extends State<EditAlertBox> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: apptheme.primaryColor,
       content: Text(
         "Are you sure you want to edit ?",
         style: apptheme.labelText,
@@ -38,7 +38,7 @@ class _EditAlertBoxState extends State<EditAlertBox> {
             },
             child: Text(
               "Yes",
-              style: TextStyle(color: Colors.white),
+              style:apptheme.buttonTextColor,
             )),
         TextButton(
             onPressed: () {
@@ -46,7 +46,7 @@ class _EditAlertBoxState extends State<EditAlertBox> {
             },
             child: Text(
               "Cancel",
-              style: TextStyle(color: Colors.white),
+              style: apptheme.buttonTextColor,
             ))
       ],
     );

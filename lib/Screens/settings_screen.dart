@@ -17,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: apptheme.primaryColor,
         appBar: AppBar(
           backgroundColor: apptheme.primaryColor,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(color: apptheme.foregroundColor),
         ),
         body: FutureBuilder(
           future: Hive.openBox<ProfileModel>(HiveKeys.boxProfile),
