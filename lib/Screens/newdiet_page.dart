@@ -24,8 +24,6 @@ class _DietPlannerPageState extends State<DietPlannerPage> {
       ),
       body: ListView(
         children: [
-          // Icon(Icons.fastfood_rounded,
-          //     size: 50, color: apptheme.foregroundColor),
           Container(
             height: 60,
             width: 60,

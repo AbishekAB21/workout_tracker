@@ -124,10 +124,8 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
           backgroundColor: apptheme.primaryColor,
-          //drawer: WorkoutScreenDrawer(),
           appBar: AppBar(
             backgroundColor: apptheme.primaryColor,
-            //title: Text("General Workouts", style: TextStyle(color: Colors.white),),
             iconTheme: IconThemeData(color: apptheme.foregroundColor),
             centerTitle: true,
             elevation: 0,

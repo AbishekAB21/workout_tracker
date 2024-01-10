@@ -8,11 +8,6 @@ class IconText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Icon(
-        //   Icons.list_rounded,
-        //   size: 50,
-        //   color: apptheme.foregroundColor,
-        // ),
         Container(
           height: 50,
           width: 50,

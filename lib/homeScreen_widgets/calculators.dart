@@ -62,11 +62,6 @@ class _CalculatorsState extends State<Calculators> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Icon(
-                            //   Icons.calculate_rounded,
-                            //   size: 40,
-                            //   color: Colors.white70,
-                            // ),
                             Container(
                               height: 60,
                               width: 60,
@@ -75,13 +70,6 @@ class _CalculatorsState extends State<Calculators> {
                             SizedBox(
                               height: 5,
                             ),
-                            // Text(
-                            //   "BMI",
-                            //   style: TextStyle(
-                            //       fontWeight: FontWeight.bold,
-                            //       color: Colors.white70,
-                            //       fontSize: 15),
-                            // )
                           ],
                         ),
                       ),
@@ -99,11 +87,6 @@ class _CalculatorsState extends State<Calculators> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Icon(
-                            //   Icons.calculate_rounded,
-                            //   size: 40,
-                            //   color: Colors.white70,
-                            // ),
                             Container(
                               height: 60,
                               width: 60,
@@ -112,13 +95,6 @@ class _CalculatorsState extends State<Calculators> {
                             SizedBox(
                               height: 5,
                             ),
-                            // Text(
-                            //   "Protein",
-                            //   style: TextStyle(
-                            //       fontWeight: FontWeight.bold,
-                            //       color: Colors.white70,
-                            //       fontSize: 15),
-                            // )
                           ],
                         ),
                       ),
@@ -136,11 +112,6 @@ class _CalculatorsState extends State<Calculators> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Icon(
-                            //   Icons.calculate_rounded,
-                            //   size: 40,
-                            //   color: Colors.white70,
-                            // ),
                             Container(
                               height: 60,
                               width: 60,
@@ -149,13 +120,6 @@ class _CalculatorsState extends State<Calculators> {
                             SizedBox(
                               height: 5,
                             ),
-                            // Text(
-                            //   "Calories",
-                            //   style: TextStyle(
-                            //       fontWeight: FontWeight.bold,
-                            //       color: Colors.white70,
-                            //       fontSize: 15),
-                            // )
                           ],
                         ),
                       ),

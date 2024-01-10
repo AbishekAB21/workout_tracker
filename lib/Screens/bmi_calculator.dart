@@ -77,11 +77,6 @@ class _BMICalculatorState extends State<BMICalculator> {
                       SizedBox(
                         height: 5,
                       ),
-                      // Icon(
-                      //   Icons.calculate_rounded,
-                      //   size: 50,
-                      //   color: Colors.white,
-                      // ),
                       Container(
                         height: 60,
                         width: 60,

@@ -98,26 +98,16 @@ void DecreaseWaterPercent() {
                         IconButton(
                             onPressed: () {
                               setState(() {
-                                IncreasewaterPercentage();
+                                DecreaseWaterPercent();
                               });
                               _updateHive();
                             },
                             icon:
-                                // Icon(
-                                //   Icons.add,
-                                //   size: 25,
-                                //   color: apptheme.foregroundColor,
-                                // )
                                 Container(
                               height: 20,
                               width: 20,
-                              child: Image.asset("assets/plus.png"),
+                              child: Image.asset("assets/minus.png"),
                             )),
-                        // Icon(
-                        //   Icons.water_drop_rounded,
-                        //   size: 30,
-                        //   color: apptheme.waterColor,
-                        // ),
                         Container(
                             height: 25,
                             width: 25,
@@ -125,27 +115,18 @@ void DecreaseWaterPercent() {
                         IconButton(
                             onPressed: () {
                               setState(() {
-                                DecreaseWaterPercent();
+                                IncreasewaterPercentage();
                               });
                               _updateHive();
                             },
                             icon:
-                                // Icon(
-                                //   Icons.remove,
-                                //   size: 25,
-                                //   color: apptheme.foregroundColor,
-                                // )
                                 Container(
                               height: 20,
                               width: 20,
-                              child: Image.asset("assets/minus.png"),
+                              child: Image.asset("assets/plus.png"),
                             )),
                       ],
                     ),
-                    // Text(
-                    //   "Per Glass",
-                    //   style: apptheme.labelText,
-                    // )
                   ],
                 ),
               ),

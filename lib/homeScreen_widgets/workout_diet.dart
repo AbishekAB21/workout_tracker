@@ -67,11 +67,6 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Icon(
-                    //   Icons.sports_gymnastics_rounded,
-                    //   size: 40,
-                    //   color: Colors.white70,
-                    // ),
                     Container(
                       height: 60,
                       width: 60,
@@ -79,11 +74,6 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                     SizedBox(
                       height: 5,
                     ),
-                    // Text(
-                    //   "Workouts",
-                    //   style: TextStyle(
-                    //       fontWeight: FontWeight.bold, color: Colors.white70),
-                    // )
                   ],
                 ),
               ),
@@ -107,11 +97,6 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Icon(
-                    //   Icons.fastfood_rounded,
-                    //   size: 40,
-                    //   color: Colors.white70,
-                    // ),
                     Container(
                       height: 60,
                       width: 60,
@@ -120,11 +105,6 @@ class _WorkoutAndDietState extends State<WorkoutAndDiet> {
                     SizedBox(
                       height: 5,
                     ),
-                    // Text(
-                    //   "Diet",
-                    //   style: TextStyle(
-                    //       fontWeight: FontWeight.bold, color: Colors.white70),
-                    // )
                   ],
                 ),
               ),

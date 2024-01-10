@@ -51,11 +51,6 @@ class _ProteinCalculatorState extends State<ProteinCalculator> {
           elevation: 0,
         ),
         body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          // Icon(
-          //   Icons.calculate_rounded,
-          //   size: 50,
-          //   color: Colors.white,
-          // ),
           Container(
             height: 60,
             width: 60,

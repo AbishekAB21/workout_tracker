@@ -69,11 +69,6 @@ class _CalorieCalculatorState extends State<CalorieCalculator> {
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            // Icon(
-            //   Icons.calculate_rounded,
-            //   size: 50,
-            //   color: Colors.white,
-            // ),
             Container(
               height: 60,
               width: 60,

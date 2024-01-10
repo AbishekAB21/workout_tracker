@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:workout_tracker/datetime/date_time.dart';
-import 'package:workout_tracker/models/diet_model.dart';
 import 'package:workout_tracker/models/exercise.dart';
 import 'package:workout_tracker/models/workouts.dart';
 
@@ -63,40 +61,7 @@ class HiveDatabase {
     _myBox.put("EXERCISES", exerciseList);
   }
 
- //------------------------------ DIET --------------------------------
-
-  // Download method
-  void saveFilePath(String path) {
-    String filepath = path;
-    print(filepath);
-    _myfilepath.put("path_database", filepath);
-    
-  }
-
-
-  void saveCuttingdiet(List<CutDiet> cut) {
-    final cutList = cut.map((cutDiet) => cutDiet.toMap()).toList();
-    _myCutBox.put("diet_database", cutList);
-  }
-
-
-  // }
-
-  List<CutDiet> readFromDietDatabase() {
-    List<Map<String, dynamic>>? cutDietMaps = _myCutBox.get("diet_database");
-
-    if (cutDietMaps == null || cutDietMaps.isEmpty) {
-      Text("No Data");
-    }
-
-    List<CutDiet> mySavedCutDietTips =
-        cutDietMaps!.map((cutMap) => CutDiet.fromMap(cutMap)).toList();
-
-    return mySavedCutDietTips;
-  }
-
- //------------------------------ DIET --------------------------------
-
+ 
   // read data, and return a list of workouts
   List<Workout> readFromDatabase() {
     List<Workout> mySavedWorkouts = [];
@@ -156,16 +121,6 @@ class HiveDatabase {
   void editWorkoutName() {}
 
   // 
-}
-
-List<Map<String, dynamic>> convertCutDietToMapList(List<CutDiet> cut) {
-  List<Map<String, dynamic>> cutList = [];
-
-  for (int i = 0; i < cut.length; i++) {
-    cutList.add({'CutTip${i + 1}': cut[i].toMap()});
-  }
-
-  return cutList;
 }
 
 // converts workout objects into a list
