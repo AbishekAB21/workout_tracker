@@ -153,124 +153,130 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                 height: 6,
               ),
               // Heat Map
-              WorkouHeatMap(
-                datasets: value.heatmapset,
-                startDateYYYYMMDD: value.getstardate(),
+              // WorkouHeatMap(
+              //   datasets: value.heatmapset,
+              //   startDateYYYYMMDD: value.getstardate(),
+              // ),
+              Text(
+                "Embrace the burn, reap the strength.",
+                style: apptheme.titleText,
+                textAlign: TextAlign.center,
               ),
-
+              SizedBox(
+                height: 20,
+              ),
               // Workouts
-              ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  separatorBuilder: (context, index) => SizedBox(
-                        height: 10,
-                      ),
-                  itemCount: value.getWorkoutList().length,
-                  // Calls the WorkoutTile page and passes the workout name as parameter
-                  itemBuilder: (context, index) => WorkoutTile(
-                        workoutName: value.getWorkoutList()[index].name,
-                        delete: IconButton(
-                            onPressed: () {
-                              String workoutName =
-                                  value.getWorkoutList()[index].name;
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    backgroundColor: apptheme.primaryColor,
-                                    content: Text(
-                                      "Are you sure you want to delete $workoutName ?",
-                                      style: apptheme.titleText,
-                                    ),
-                                    actions: [
-                                      // Yes
-                                      TextButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              value.deleteFromDatabase(index);
-                                            });
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                            "Yes",
-                                            style:
-                                                apptheme.buttonTextColor,
-                                          )),
-
-                                      //Cancel
-                                      TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context),
-                                          child: Text(
-                                            "Cancel",
-                                            style:
-                                                apptheme.buttonTextColor,
-                                          )),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                            icon: Icon(Icons.delete)),
-                        edit: IconButton(
-                            //bottomsheet or Alert dialogue
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    backgroundColor: apptheme.primaryColor,
-                                    title: Text("Edit Workout Name",
-                                        style: apptheme.titleText),
-                                    content: TextField(
-                                      controller: editController,
-                                      style: apptheme.labelText,
-                                      decoration: InputDecoration(
-                                        fillColor:
-                                            apptheme.primaryColor,
-                                        filled: true,
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: apptheme.borderColor)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: apptheme.borderColor)),
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        hintText: "Enter Updated Workout Name",
-                                        hintStyle: apptheme.hintText
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (context, index) => SizedBox(
+                          height: 10,
+                        ),
+                    itemCount: value.getWorkoutList().length,
+                    // Calls the WorkoutTile page and passes the workout name as parameter
+                    itemBuilder: (context, index) => WorkoutTile(
+                          workoutName: value.getWorkoutList()[index].name,
+                          delete: IconButton(
+                              onPressed: () {
+                                String workoutName =
+                                    value.getWorkoutList()[index].name;
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      backgroundColor: apptheme.primaryColor,
+                                      content: Text(
+                                        "Are you sure you want to delete $workoutName ?",
+                                        style: apptheme.titleText,
                                       ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                          onPressed: () {
-                                            // edit operation should be saved/updated so call the function here in set state
-                                            setState(() {
-                                              value.editWorkoutName(
-                                                  editController.text, index);
-                                              editController.clear();
-                                            });
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                            "Update",
-                                            style:
-                                                apptheme.buttonTextColor,
-                                          )),
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text("Cancel",
-                                              style: apptheme.buttonTextColor))
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                            icon: Icon(Icons.edit)),
-                      )),
+                                      actions: [
+                                        // Yes
+                                        TextButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                value.deleteFromDatabase(index);
+                                              });
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              "Yes",
+                                              style: apptheme.buttonTextColor,
+                                            )),
+                
+                                        //Cancel
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: Text(
+                                              "Cancel",
+                                              style: apptheme.buttonTextColor,
+                                            )),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.delete)),
+                          edit: IconButton(
+                              //bottomsheet or Alert dialogue
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      backgroundColor: apptheme.primaryColor,
+                                      title: Text("Edit Workout Name",
+                                          style: apptheme.titleText),
+                                      content: TextField(
+                                        controller: editController,
+                                        style: apptheme.labelText,
+                                        decoration: InputDecoration(
+                                            fillColor: apptheme.primaryColor,
+                                            filled: true,
+                                            enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: apptheme.borderColor)),
+                                            focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: apptheme.borderColor)),
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            hintText:
+                                                "Enter Updated Workout Name",
+                                            hintStyle: apptheme.hintText),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              // edit operation should be saved/updated so call the function here in set state
+                                              setState(() {
+                                                value.editWorkoutName(
+                                                    editController.text, index);
+                                                editController.clear();
+                                              });
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              "Update",
+                                              style: apptheme.buttonTextColor,
+                                            )),
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text("Cancel",
+                                                style: apptheme.buttonTextColor))
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.edit)),
+                        )),
+              ),
             ],
           )),
     );

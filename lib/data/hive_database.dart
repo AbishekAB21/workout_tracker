@@ -8,8 +8,6 @@ class HiveDatabase {
   final _myBox = Hive.box("workout_database");
   final _myCutBox = Hive.box("diet_database");
 
-  //Download method
-  final _myfilepath = Hive.box("path_database");
 
   // check if data is already stored, if not, record start date
   bool previousDataExists() {
